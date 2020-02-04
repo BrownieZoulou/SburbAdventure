@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Nodes/Entity/EntityShower.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,12 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 13
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
 [node name="EntityShower" type="Control"]
@@ -78,6 +84,7 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="StatContainer" type="VBoxContainer" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
@@ -176,7 +183,7 @@ margin_bottom = -51.0
 texture = ExtResource( 3 )
 expand = true
 
-[node name="Button" type="Button" parent="."]
+[node name="ChangeWeaponBtn" type="Button" parent="."]
 margin_left = 504.276
 margin_top = 100.0
 margin_right = 703.276
@@ -215,4 +222,78 @@ margin_right = 974.54
 margin_bottom = 129.685
 custom_fonts/font = SubResource( 3 )
 text = "Strifeless Attack"
+
+[node name="ChangeWeaponBox" type="Control" parent="."]
+visible = false
+margin_left = 505.0
+margin_top = 143.0
+margin_right = 997.0
+margin_bottom = 358.0
+
+[node name="TextureRect" type="TextureRect" parent="ChangeWeaponBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="NewWeaponName" type="HBoxContainer" parent="ChangeWeaponBox"]
+anchor_right = 1.0
+margin_top = 11.0
+margin_bottom = 75.0
+alignment = 1
+
+[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponName"]
+margin_left = 19.0
+margin_top = 24.0
+margin_right = 269.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "New weapon name :"
+
+[node name="NameChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponName"]
+margin_left = 273.0
+margin_right = 473.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 200, 16 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="NewWeaponAttack" type="HBoxContainer" parent="ChangeWeaponBox"]
+anchor_right = 1.0
+margin_top = 89.0
+margin_bottom = 131.0
+alignment = 1
+
+[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponAttack"]
+margin_left = 9.0
+margin_top = 13.0
+margin_right = 279.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "New weapon attack :"
+
+[node name="AttackChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponAttack"]
+margin_left = 283.0
+margin_right = 483.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 200, 16 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ConfirmChange" type="Button" parent="ChangeWeaponBox"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.0
+margin_top = -57.8298
+margin_right = 83.0
+margin_bottom = -12.8298
+custom_fonts/font = SubResource( 5 )
+text = "Confirm !"
+[connection signal="button_down" from="ChangeWeaponBtn" to="." method="_on_ChangeWeaponBtn_button_down"]
 [connection signal="button_down" from="Close" to="." method="_on_Close_button_down"]
+[connection signal="button_down" from="ChangeWeaponBox/ConfirmChange" to="." method="_on_ConfirmChange_button_down"]

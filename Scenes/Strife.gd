@@ -35,8 +35,12 @@ func Toggle_entity_focus(e) :
 	else : 
 		entity_focused = e
 		is_entity_focused = true
+	ReloadEntityShower()
+
+func ReloadEntityShower() :
 	$CanvasLayer/EntityShower.Toggle_visibility(is_entity_focused, entity_focused, is_admin_mode)
 
 func Toggle_admin_mode() :
 	is_admin_mode = !is_admin_mode
 	$CanvasLayer/BtnContainer/HBoxContainer/CheckBox.pressed = is_admin_mode
+	ReloadEntityShower()
