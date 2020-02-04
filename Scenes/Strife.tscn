@@ -1,28 +1,30 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Strife.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Entity/Entity.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Nodes/PositionManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/Entity/Kid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/PositionManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [node name="Strife" type="Node2D"]
 script = ExtResource( 1 )
 Entity_node = ExtResource( 2 )
+Kid_node = ExtResource( 3 )
 
-[node name="PositionManager" parent="." instance=ExtResource( 3 )]
+[node name="PositionManager" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 0, 700.334 )
 
@@ -39,7 +41,6 @@ valign = 2
 autowrap = true
 
 [node name="BtnContainer" type="HBoxContainer" parent="CanvasLayer"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_top = 75.327
 margin_bottom = 106.327
@@ -89,7 +90,6 @@ margin_bottom = 31.0
 pressed = true
 
 [node name="AddEntityContainer" type="HBoxContainer" parent="CanvasLayer"]
-editor/display_folded = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -114,24 +114,35 @@ rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 3 )
 text = "+"
 
-[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="KidCarrousel" type="HBoxContainer" parent="CanvasLayer"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 margin_top = 123.0
 margin_bottom = 250.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/KidCarrousel"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/KidCarrousel/HBoxContainer"]
 margin_bottom = 127.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/KidCarrousel/HBoxContainer/VBoxContainer"]
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/KidCarrousel/HBoxContainer/VBoxContainer"]
 margin_top = 4.0
 margin_bottom = 18.0
+
+[node name="MobCarrousel" type="HBoxContainer" parent="CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+[connection signal="button_down" from="CanvasLayer/BtnContainer/HBoxContainer/ToggleAdminModBtn" to="." method="Toggle_admin_mode"]
+[connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="Toggle_admin_mode"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="." method="_on_AddKid_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="." method="_on_AddMob_button_down"]

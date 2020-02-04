@@ -3,7 +3,9 @@
 [ext_resource path="res://Nodes/Entity/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/VoidSprite.png" type="Texture" id=2]
 
-[node name="Entity" type="Node2D"]
+[node name="Entity" type="Node2D" groups=[
+"entity",
+]]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
