@@ -73,9 +73,8 @@ custom_constants/hseparation = 0
 text = "Admin Mode"
 
 [node name="CheckBox" type="CheckBox" parent="CanvasLayer/BtnContainer/HBoxContainer"]
-anchor_right = 0.78
 margin_left = 124.0
-margin_right = 32.56
+margin_right = 148.0
 margin_bottom = 31.0
 
 [node name="AddEntityContainer" type="HBoxContainer" parent="CanvasLayer"]
