@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Nodes/PositionManager.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Position.tscn" type="PackedScene" id=2]
+
+[node name="PositionManager" type="Position2D"]
+script = ExtResource( 1 )
+Position_node = ExtResource( 2 )
+
+[node name="KidPositions" type="Position2D" parent="."]
+position = Vector2( 50, 0 )
+
+[node name="MobPositions" type="Position2D" parent="."]
+position = Vector2( 974, 0 )
