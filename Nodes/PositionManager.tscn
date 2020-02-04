@@ -11,4 +11,4 @@ Position_node = ExtResource( 2 )
 position = Vector2( 50, 0 )
 
 [node name="MobPositions" type="Position2D" parent="."]
-position = Vector2( 974, 0 )
+position = Vector2( 970, 0 )

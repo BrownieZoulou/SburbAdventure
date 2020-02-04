@@ -1,21 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Nodes/PositionManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Strife.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Entity/Entity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/PositionManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [node name="Strife" type="Node2D"]
+script = ExtResource( 1 )
+Entity_node = ExtResource( 2 )
+
+[node name="PositionManager" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 0, 700.334 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -30,6 +39,7 @@ valign = 2
 autowrap = true
 
 [node name="BtnContainer" type="HBoxContainer" parent="CanvasLayer"]
+editor/display_folded = true
 anchor_right = 1.0
 margin_top = 75.327
 margin_bottom = 106.327
@@ -37,32 +47,32 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="SaveBtn" type="Button" parent="CanvasLayer/BtnContainer"]
-margin_left = 65.0
-margin_right = 198.0
+margin_left = 173.0
+margin_right = 229.0
 margin_bottom = 31.0
 custom_fonts/font = SubResource( 2 )
 custom_constants/hseparation = 0
-text = "Sauvegarder"
+text = "Save"
 
 [node name="ChangeBackgroundBtn" type="Button" parent="CanvasLayer/BtnContainer"]
-margin_left = 228.0
-margin_right = 471.0
+margin_left = 259.0
+margin_right = 457.0
 margin_bottom = 31.0
 custom_fonts/font = SubResource( 2 )
 custom_constants/hseparation = 0
-text = "Changer Le Background"
+text = "Change Background"
 
 [node name="AddElementBtn" type="Button" parent="CanvasLayer/BtnContainer"]
-margin_left = 501.0
-margin_right = 780.0
+margin_left = 487.0
+margin_right = 672.0
 margin_bottom = 31.0
 custom_fonts/font = SubResource( 2 )
 custom_constants/hseparation = 0
-text = "Ajouter un élément de jeu"
+text = "Add game element"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BtnContainer"]
-margin_left = 810.0
-margin_right = 958.0
+margin_left = 702.0
+margin_right = 850.0
 margin_bottom = 31.0
 
 [node name="ToggleAdminModBtn" type="Button" parent="CanvasLayer/BtnContainer/HBoxContainer"]
@@ -76,17 +86,19 @@ text = "Admin Mode"
 margin_left = 124.0
 margin_right = 148.0
 margin_bottom = 31.0
+pressed = true
 
 [node name="AddEntityContainer" type="HBoxContainer" parent="CanvasLayer"]
+editor/display_folded = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -194.389
-margin_bottom = -144.389
+margin_top = -93.0002
+margin_bottom = -43.0002
 custom_constants/separation = 200
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/AddEntityContainer"]
+[node name="AddKid" type="Button" parent="CanvasLayer/AddEntityContainer"]
 margin_left = 362.0
 margin_right = 412.0
 margin_bottom = 50.0
@@ -94,7 +106,7 @@ rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 3 )
 text = "+"
 
-[node name="Button2" type="Button" parent="CanvasLayer/AddEntityContainer"]
+[node name="AddMob" type="Button" parent="CanvasLayer/AddEntityContainer"]
 margin_left = 612.0
 margin_right = 662.0
 margin_bottom = 50.0
@@ -102,5 +114,24 @@ rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 3 )
 text = "+"
 
-[node name="PositionManager" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 670 )
+[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_top = 123.0
+margin_bottom = 250.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer"]
+margin_bottom = 127.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer"]
+margin_top = 4.0
+margin_bottom = 18.0
+[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="." method="_on_AddKid_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="." method="_on_AddMob_button_down"]
