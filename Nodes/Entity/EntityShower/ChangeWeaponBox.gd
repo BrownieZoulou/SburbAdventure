@@ -17,4 +17,4 @@ func _on_ConfirmChange_button_down():
 	$NewWeaponAttack/AttackChangeValue.set_text("")
 	$NewWeaponName/NameChangeValue.set_text("")
 	$NewWeaponKind/KindChangeValue.set_text("")
-	get_tree().get_current_scene().ReloadEntityShower()
+	get_tree().get_current_scene().reload_entity_shower()

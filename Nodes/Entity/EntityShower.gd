@@ -62,15 +62,15 @@ func Toggle_visibility(is_entity_focused, entity_focused, is_admin_mode) :
 
 func _on_Close_button_down():
 	self.visible = false
-	get_tree().get_current_scene().Toggle_entity_focus(self)
+	get_tree().get_current_scene().toggle_entity_focus(self)
 
 func _on_StrifeAttack_button_down():
-	get_tree().get_current_scene().Prepare_attack(STRIFE)
-	get_tree().get_current_scene().Toggle_entity_focus(self)
+	get_tree().get_current_scene().prepare_attack(STRIFE)
+	get_tree().get_current_scene().toggle_entity_focus(self)
 	print("prepare strife attack!")
 
 
 func _on_StrifelessAttack_button_down():
-	get_tree().get_current_scene().Prepare_attack(STRIFELESS)
-	get_tree().get_current_scene().Toggle_entity_focus(self)
+	get_tree().get_current_scene().prepare_attack(STRIFELESS)
+	get_tree().get_current_scene().toggle_entity_focus(self)
 	print("prepare strifeless attack!")

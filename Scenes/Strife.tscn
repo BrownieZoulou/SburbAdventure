@@ -138,7 +138,6 @@ anchor_right = 1.0
 margin_top = 248.317
 margin_bottom = 264.317
 tick_count = 1
-ticks_on_borders = false
 
 [node name="KidContainer" type="HBoxContainer" parent="CanvasLayer/KidCarrousel"]
 margin_top = -130.884
