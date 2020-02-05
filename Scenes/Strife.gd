@@ -10,6 +10,7 @@ var is_admin_mode = true
 var is_entity_focused
 var entity_focused
 var attack_is_ongoing
+var is_strife_on
 
 func _on_AddMob_button_down():
 	if(mobs.size()<16) :
@@ -29,12 +30,22 @@ func _on_AddKid_button_down():
 		get_tree().get_root().add_child(new_kid)
 
 func Toggle_entity_focus(e) :
-	if(entity_focused == e || e == $CanvasLayer/EntityShower) :
-		is_entity_focused = false
-		entity_focused = null
-	else : 
-		entity_focused = e
-		is_entity_focused = true
+	if(entity_focused == e || e == $CanvasLayer/EntityShower) : #Hide entity shower if with click a second time or if we click the close button
+		if(!attack_is_ongoing) :
+			is_entity_focused = false
+			entity_focused = null
+		else : #Furthermore! If attack is ongoing, close entity shower but keep the entity in mind
+			is_entity_focused = false
+	else : #Focusing an other entity
+		if(attack_is_ongoing) : #But if attack on going, launch the Attack !!
+			entity_focused.Attack(e, is_strife_on)
+			is_entity_focused = false
+			entity_focused = null
+			attack_is_ongoing = false
+			$CanvasLayer/Choosetarget.visible = false
+		else :
+			entity_focused = e
+			is_entity_focused = true
 	ReloadEntityShower()
 
 func ReloadEntityShower() :
@@ -44,3 +55,9 @@ func Toggle_admin_mode() :
 	is_admin_mode = !is_admin_mode
 	$CanvasLayer/BtnContainer/HBoxContainer/CheckBox.pressed = is_admin_mode
 	ReloadEntityShower()
+
+func Prepare_attack(iso):
+	print("preparing attack!")
+	attack_is_ongoing = true
+	is_strife_on = iso
+	$CanvasLayer/Choosetarget.visible = true

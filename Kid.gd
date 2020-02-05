@@ -11,3 +11,10 @@ func EarnExp(exp_earned) :
 		level += 1
 		experience -= next_level_experience_needed
 		next_level_experience_needed +=1
+
+func Attack(target, is_strife_used) :
+	anim.play("AttackRight")
+	if(is_strife_used) :
+		target.GetHit(self, attack + weapon_attack)
+	else:
+		target.GetHit(self, attack)
