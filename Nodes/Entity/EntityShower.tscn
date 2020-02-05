@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Nodes/Entity/EntityShower.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprites/PlaceHolder.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/lifeBarBackground.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/lifeBar.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/PlaceHolder.png" type="Texture" id=5]
+[ext_resource path="res://Nodes/Entity/EntityShower/DeleteConfirm.gd" type="Script" id=6]
+[ext_resource path="res://Nodes/Entity/EntityShower/ChangeWeaponBox.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -13,13 +17,23 @@ size = 9
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 13
+size = 12
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 13
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
 
 [node name="EntityShower" type="Control"]
@@ -69,18 +83,19 @@ text = "Hp: Hp/Hp_max"
 
 [node name="Healthbar" type="TextureProgress" parent="."]
 margin_left = 74.8357
-margin_top = 126.775
-margin_right = 290.836
-margin_bottom = 133.775
+margin_top = 120.613
+margin_right = 274.836
+margin_bottom = 125.613
+rect_min_size = Vector2( 200, 5 )
 texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
 
 [node name="ProfilePic" type="TextureRect" parent="."]
 anchor_bottom = 1.0
 margin_left = 202.262
 margin_right = 292.262
 margin_bottom = -51.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="StatContainer" type="VBoxContainer" parent="."]
@@ -152,7 +167,7 @@ anchor_bottom = 1.0
 margin_left = 480.0
 margin_right = 482.0
 margin_bottom = -4.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="WeaponName" type="Label" parent="."]
@@ -177,26 +192,38 @@ align = 1
 
 [node name="WeaponProfilePic" type="TextureRect" parent="."]
 anchor_bottom = 1.0
-margin_left = 632.306
-margin_right = 722.306
-margin_bottom = -51.0
-texture = ExtResource( 3 )
+margin_left = 635.881
+margin_top = 0.397217
+margin_right = 725.881
+margin_bottom = -50.6028
+texture = ExtResource( 5 )
 expand = true
 
-[node name="ChangeWeaponBtn" type="Button" parent="."]
-margin_left = 504.276
-margin_top = 100.0
-margin_right = 703.276
-margin_bottom = 131.0
+[node name="WeaponKind" type="Label" parent="."]
+margin_left = 622.0
+margin_top = 96.0
+margin_right = 741.0
+margin_bottom = 113.0
 custom_fonts/font = SubResource( 3 )
-text = "Change weapon"
+text = "testKind"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="ChangeWeaponBtn" type="Button" parent="."]
+margin_left = 503.572
+margin_top = 96.7147
+margin_right = 613.572
+margin_bottom = 129.715
+custom_fonts/font = SubResource( 4 )
+text = "Change"
 
 [node name="Separator2" type="TextureRect" parent="."]
 anchor_bottom = 1.0
 margin_left = 747.0
 margin_right = 749.0
 margin_bottom = -4.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="Close" type="Button" parent="."]
@@ -204,15 +231,73 @@ margin_left = 913.971
 margin_top = -1.0
 margin_right = 976.971
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Close"
+
+[node name="Delete" type="Button" parent="."]
+margin_left = 778.0
+margin_top = -1.0
+margin_right = 874.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.407843, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+text = "Delete"
+
+[node name="DeleteConfirm" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 619.0
+margin_top = -108.0
+margin_right = 1020.0
+margin_bottom = -20.0
+texture = ExtResource( 5 )
+expand = true
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="DeleteConfirm"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 6.0
+margin_top = -31.7608
+margin_right = -5.0
+margin_bottom = 3.23917
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Are you sure ?
+Might prevent entity save !"
+align = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="DeleteConfirm"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 23.1577
+margin_top = 13.2104
+margin_right = 168.158
+margin_bottom = 35.2104
+custom_fonts/font = SubResource( 8 )
+text = "Confirm"
+
+[node name="Button2" type="Button" parent="DeleteConfirm"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 207.367
+margin_top = 13.2104
+margin_right = 352.367
+margin_bottom = 35.2104
+custom_fonts/font = SubResource( 8 )
+text = "Oops no"
 
 [node name="StrifeAttack" type="Button" parent="."]
 margin_left = 775.54
 margin_top = 56.6735
 margin_right = 974.54
 margin_bottom = 87.6735
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.352941, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.494118, 0, 1 )
 text = "Strife Attack !"
 
 [node name="StrifelessAttack" type="Button" parent="."]
@@ -220,7 +305,7 @@ margin_left = 775.54
 margin_top = 98.6848
 margin_right = 974.54
 margin_bottom = 129.685
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Strifeless Attack"
 
 [node name="ChangeWeaponBox" type="Control" parent="."]
@@ -229,71 +314,115 @@ margin_left = 505.0
 margin_top = 143.0
 margin_right = 997.0
 margin_bottom = 358.0
+script = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="ChangeWeaponBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -4.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="NewWeaponName" type="HBoxContainer" parent="ChangeWeaponBox"]
 anchor_right = 1.0
 margin_top = 11.0
-margin_bottom = 75.0
+margin_bottom = 50.0
 alignment = 1
 
 [node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponName"]
-margin_left = 19.0
-margin_top = 24.0
-margin_right = 269.0
-margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+margin_left = 25.0
+margin_top = 11.0
+margin_right = 213.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "New weapon name :"
+text = "Weapon name :"
 
 [node name="NameChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponName"]
-margin_left = 273.0
-margin_right = 473.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 200, 16 )
-custom_fonts/font = SubResource( 4 )
+margin_left = 217.0
+margin_right = 467.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 250, 16 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "test"
+
+[node name="NewWeaponKind" type="HBoxContainer" parent="ChangeWeaponBox"]
+anchor_right = 1.0
+margin_top = 57.6537
+margin_bottom = 96.6537
+alignment = 1
+
+[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponKind"]
+margin_left = 29.0
+margin_top = 11.0
+margin_right = 209.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon kind :"
+
+[node name="KindChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponKind"]
+margin_left = 213.0
+margin_right = 463.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 250, 16 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="NewWeaponAttack" type="HBoxContainer" parent="ChangeWeaponBox"]
 anchor_right = 1.0
-margin_top = 89.0
-margin_bottom = 131.0
+margin_top = 109.871
+margin_bottom = 147.871
 alignment = 1
 
 [node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponAttack"]
-margin_left = 9.0
-margin_top = 13.0
-margin_right = 279.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 4 )
+margin_left = 15.0
+margin_top = 11.0
+margin_right = 223.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "New weapon attack :"
+text = "Weapon attack :"
 
 [node name="AttackChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponAttack"]
-margin_left = 283.0
-margin_right = 483.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 200, 16 )
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 227.0
+margin_right = 477.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 250, 16 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="ConfirmChange" type="Button" parent="ChangeWeaponBox"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -83.0
+margin_left = 39.7731
 margin_top = -57.8298
-margin_right = 83.0
+margin_right = 205.773
 margin_bottom = -12.8298
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Confirm !"
-[connection signal="button_down" from="ChangeWeaponBtn" to="." method="_on_ChangeWeaponBtn_button_down"]
+
+[node name="SaveWeapon" type="Button" parent="ChangeWeaponBox"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -226.644
+margin_top = -57.8298
+margin_right = 7.35565
+margin_bottom = -12.8298
+custom_fonts/font = SubResource( 6 )
+text = "Save as element?"
+[connection signal="button_down" from="ChangeWeaponBtn" to="ChangeWeaponBox" method="_on_ChangeWeaponBtn_button_down"]
 [connection signal="button_down" from="Close" to="." method="_on_Close_button_down"]
-[connection signal="button_down" from="ChangeWeaponBox/ConfirmChange" to="." method="_on_ConfirmChange_button_down"]
+[connection signal="button_down" from="Delete" to="DeleteConfirm" method="_on_Delete_button_down"]
+[connection signal="button_down" from="DeleteConfirm/Button" to="DeleteConfirm" method="_on_Button_button_down"]
+[connection signal="button_down" from="DeleteConfirm/Button2" to="DeleteConfirm" method="_on_Button_button_down"]
+[connection signal="button_down" from="DeleteConfirm/Button2" to="DeleteConfirm" method="_on_Button2_button_down"]
+[connection signal="button_down" from="StrifeAttack" to="." method="_on_StrifeAttack_button_down"]
+[connection signal="button_down" from="StrifelessAttack" to="." method="_on_StrifelessAttack_button_down"]
+[connection signal="button_down" from="ChangeWeaponBox/ConfirmChange" to="ChangeWeaponBox" method="_on_ConfirmChange_button_down"]
+[connection signal="button_down" from="ChangeWeaponBox/SaveWeapon" to="ChangeWeaponBox" method="_on_ConfirmChange_button_down"]
