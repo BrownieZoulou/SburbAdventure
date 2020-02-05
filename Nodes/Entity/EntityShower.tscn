@@ -24,19 +24,20 @@ font_data = ExtResource( 2 )
 size = 13
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 2 )
+
 [node name="EntityShower" type="Control"]
+editor/display_folded = true
 anchor_right = 1.0
 margin_top = 123.78
 margin_bottom = 264.78
@@ -263,7 +264,7 @@ margin_left = 6.0
 margin_top = -31.7608
 margin_right = -5.0
 margin_bottom = 3.23917
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Are you sure ?
 Might prevent entity save !"
@@ -277,7 +278,7 @@ margin_left = 23.1577
 margin_top = 13.2104
 margin_right = 168.158
 margin_bottom = 35.2104
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Confirm"
 
 [node name="Button2" type="Button" parent="DeleteConfirm"]
@@ -287,7 +288,7 @@ margin_left = 207.367
 margin_top = 13.2104
 margin_right = 352.367
 margin_bottom = 35.2104
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Oops no"
 
 [node name="StrifeAttack" type="Button" parent="."]
@@ -334,7 +335,7 @@ margin_left = 25.0
 margin_top = 11.0
 margin_right = 213.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon name :"
 
@@ -343,7 +344,7 @@ margin_left = 217.0
 margin_right = 467.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 250, 16 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "test"
 
@@ -358,7 +359,7 @@ margin_left = 29.0
 margin_top = 11.0
 margin_right = 209.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon kind :"
 
@@ -367,7 +368,7 @@ margin_left = 213.0
 margin_right = 463.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 250, 16 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="NewWeaponAttack" type="HBoxContainer" parent="ChangeWeaponBox"]
@@ -381,7 +382,7 @@ margin_left = 15.0
 margin_top = 11.0
 margin_right = 223.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon attack :"
 
@@ -390,7 +391,7 @@ margin_left = 227.0
 margin_right = 477.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 250, 16 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="ConfirmChange" type="Button" parent="ChangeWeaponBox"]
@@ -402,7 +403,7 @@ margin_left = 39.7731
 margin_top = -57.8298
 margin_right = 205.773
 margin_bottom = -12.8298
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Confirm !"
 
 [node name="SaveWeapon" type="Button" parent="ChangeWeaponBox"]
@@ -414,14 +415,14 @@ margin_left = -226.644
 margin_top = -57.8298
 margin_right = 7.35565
 margin_bottom = -12.8298
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Save as element?"
 [connection signal="button_down" from="ChangeWeaponBtn" to="ChangeWeaponBox" method="_on_ChangeWeaponBtn_button_down"]
 [connection signal="button_down" from="Close" to="." method="_on_Close_button_down"]
 [connection signal="button_down" from="Delete" to="DeleteConfirm" method="_on_Delete_button_down"]
 [connection signal="button_down" from="DeleteConfirm/Button" to="DeleteConfirm" method="_on_Button_button_down"]
-[connection signal="button_down" from="DeleteConfirm/Button2" to="DeleteConfirm" method="_on_Button_button_down"]
 [connection signal="button_down" from="DeleteConfirm/Button2" to="DeleteConfirm" method="_on_Button2_button_down"]
+[connection signal="button_down" from="DeleteConfirm/Button2" to="DeleteConfirm" method="_on_Button_button_down"]
 [connection signal="button_down" from="StrifeAttack" to="." method="_on_StrifeAttack_button_down"]
 [connection signal="button_down" from="StrifelessAttack" to="." method="_on_StrifelessAttack_button_down"]
 [connection signal="button_down" from="ChangeWeaponBox/ConfirmChange" to="ChangeWeaponBox" method="_on_ConfirmChange_button_down"]

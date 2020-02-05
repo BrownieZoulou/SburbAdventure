@@ -116,9 +116,9 @@ centered = false
 offset = Vector2( -70, -180 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = -42.0
-margin_top = -171.0
-margin_right = 50.0
+margin_left = -45.0
+margin_top = -180.0
+margin_right = 45.0
 flat = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]

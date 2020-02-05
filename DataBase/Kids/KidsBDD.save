@@ -1,0 +1,21 @@
+{
+  "id" : BoiledEgg,
+  "entity_name" = Boiled Egg,
+  "profile_pic" = ://res/DataBase/Kids/BoiledEgg/BoiledEgg.png,
+  "hp" = 20,
+  "max_hp" = 20,
+  "attack" = 10,
+  "armor" = 5,
+  "weapon_name" = "H4mM3 r",
+  "weapon_kind" = "hammerKind",
+  "weapon_profile_pic" = "",
+  "weapon_attack" = 10,
+  "strenght" = 5,
+  "perception" = 6,
+  "agility" = 7,
+  "charisma" = 8,
+  "luck" = 1,
+  "strife" = 5,
+  "exp_to_give" = 1000,
+  "gritz" = 10000000001
+}

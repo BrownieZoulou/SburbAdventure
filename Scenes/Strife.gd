@@ -12,6 +12,9 @@ var entity_focused
 var attack_is_ongoing
 var is_strife_on
 
+var dictionary_loaded
+var new_kid_name
+
 func _on_AddMob_button_down():
 	if(mobs.size()<16) :
 		var new_entity = Entity_node.instance()
@@ -21,7 +24,7 @@ func _on_AddMob_button_down():
 		get_tree().get_root().add_child(new_entity)
 
 
-func _on_AddKid_button_down():
+func AddKid():
 	if(kids.size()<8) :
 		var new_kid = Kid_node.instance()
 		var new_kid_position =  $PositionManager/KidPositions.get_child(kids.size()).global_position
@@ -60,4 +63,18 @@ func Prepare_attack(iso):
 	print("preparing attack!")
 	attack_is_ongoing = true
 	is_strife_on = iso
-	$CanvasLayer/Choosetarget.visible = true
+	$CanvasLayer/ChooseTarget.visible = true
+
+func LoadKid(kid_to_spawn)  :
+	print(kid_to_spawn + " spawning engaged")
+	var new_kid_file = File.new()
+	if not new_kid_file.file_exists("res://DataBase/Kids/KidsBDD.save"):
+		print( "Error! We don't have a save to load.")
+	else :
+		print("File is existing, engaging spawing")
+		new_kid_file.open("res://DataBase/Kids/KidsBDD.save", File.READ)
+		var json_text = new_kid_file.get_as_text()
+		print("new_kid_file.get_as_text() = " + new_kid_file.get_as_text())
+		var json_result = JSON.parse(json_text)
+		print(json_result.result["id"])
+		new_kid_file.close()
