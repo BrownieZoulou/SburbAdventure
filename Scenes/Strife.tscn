@@ -1,17 +1,15 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Strife.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Entity/Entity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/Entity/Kid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nodes/PositionManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Nodes/KidCarrousel.gd" type="Script" id=7]
-[ext_resource path="res://Nodes/KidCarrouselElement.gd" type="Script" id=8]
-[ext_resource path="res://DataBase/Kids/BoiledEgg/BoiledEgg.png" type="Texture" id=9]
-[ext_resource path="res://DataBase/Kids/Drave/Drave.png" type="Texture" id=10]
-[ext_resource path="res://DataBase/Kids/Pink/Pink.png" type="Texture" id=11]
-[ext_resource path="res://DataBase/Kids/Jodes/Jodes.png" type="Texture" id=12]
+[ext_resource path="res://Nodes/AddEntityContainer.gd" type="Script" id=6]
+[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/KidCarrousel.gd" type="Script" id=8]
+[ext_resource path="res://Nodes/EntityMiniature.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Nodes/MobCarrousel.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -23,6 +21,9 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -54,7 +55,6 @@ valign = 2
 autowrap = true
 
 [node name="BtnContainer" type="HBoxContainer" parent="CanvasLayer"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_top = 75.327
 margin_bottom = 106.327
@@ -86,7 +86,6 @@ custom_constants/hseparation = 0
 text = "Add game element"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BtnContainer"]
-editor/display_folded = true
 margin_left = 702.0
 margin_right = 850.0
 margin_bottom = 31.0
@@ -112,6 +111,7 @@ margin_top = -93.0002
 margin_bottom = -43.0002
 custom_constants/separation = 200
 alignment = 1
+script = ExtResource( 6 )
 
 [node name="AddKid" type="Button" parent="CanvasLayer/AddEntityContainer"]
 margin_left = 362.0
@@ -129,7 +129,20 @@ rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 3 )
 text = "+"
 
-[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 6 )]
+[node name="Close" type="Button" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -90.1371
+margin_right = 38.0
+margin_bottom = -40.1371
+custom_fonts/font = SubResource( 6 )
+text = "Close"
+
+[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 7 )]
 visible = false
 
 [node name="KidCarrousel" type="HSlider" parent="CanvasLayer"]
@@ -138,160 +151,29 @@ anchor_right = 1.0
 margin_top = 248.317
 margin_bottom = 264.317
 tick_count = 1
+ticks_on_borders = true
 
 [node name="KidContainer" type="HBoxContainer" parent="CanvasLayer/KidCarrousel"]
 margin_top = -130.884
 margin_right = 412.0
 margin_bottom = -0.883972
-script = ExtResource( 7 )
-
-[node name="BoiledEgg" type="Control" parent="CanvasLayer/KidCarrousel/KidContainer"]
-editor/display_folded = true
-margin_right = 100.0
-margin_bottom = 130.0
-rect_min_size = Vector2( 100, 130 )
 script = ExtResource( 8 )
+entity_miniature_node = ExtResource( 9 )
 
-[node name="Setting" type="VBoxContainer" parent="CanvasLayer/KidCarrousel/KidContainer/BoiledEgg"]
-editor/display_folded = true
-margin_left = 4.0
-margin_right = 104.0
-margin_bottom = 134.0
-
-[node name="ProfilePic" type="TextureRect" parent="CanvasLayer/KidCarrousel/KidContainer/BoiledEgg/Setting"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 6
-
-[node name="Name" type="Label" parent="CanvasLayer/KidCarrousel/KidContainer/BoiledEgg/Setting"]
-margin_top = 104.0
-margin_right = 100.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 0, 30 )
-text = "Boiled Egg"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-
-[node name="Button" type="Button" parent="CanvasLayer/KidCarrousel/KidContainer/BoiledEgg"]
+[node name="MobCarrousel" type="HSlider" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
-anchor_bottom = 1.0
-flat = true
+margin_top = 248.317
+margin_bottom = 264.317
+tick_count = 1
+ticks_on_borders = true
 
-[node name="Drave" type="Control" parent="CanvasLayer/KidCarrousel/KidContainer"]
-editor/display_folded = true
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 130.0
-rect_min_size = Vector2( 100, 130 )
-script = ExtResource( 8 )
-
-[node name="Setting" type="VBoxContainer" parent="CanvasLayer/KidCarrousel/KidContainer/Drave"]
-margin_left = 4.0
-margin_right = 104.0
-margin_bottom = 134.0
-
-[node name="ProfilePic" type="TextureRect" parent="CanvasLayer/KidCarrousel/KidContainer/Drave/Setting"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 6
-
-[node name="Name" type="Label" parent="CanvasLayer/KidCarrousel/KidContainer/Drave/Setting"]
-margin_top = 104.0
-margin_right = 100.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 0, 30 )
-text = "Drave"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-
-[node name="Button" type="Button" parent="CanvasLayer/KidCarrousel/KidContainer/Drave"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-flat = true
-
-[node name="Pink" type="Control" parent="CanvasLayer/KidCarrousel/KidContainer"]
-editor/display_folded = true
-margin_left = 208.0
-margin_right = 308.0
-margin_bottom = 130.0
-rect_min_size = Vector2( 100, 130 )
-script = ExtResource( 8 )
-
-[node name="Setting" type="VBoxContainer" parent="CanvasLayer/KidCarrousel/KidContainer/Pink"]
-margin_left = 4.0
-margin_right = 104.0
-margin_bottom = 134.0
-
-[node name="ProfilePic" type="TextureRect" parent="CanvasLayer/KidCarrousel/KidContainer/Pink/Setting"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 6
-
-[node name="Name" type="Label" parent="CanvasLayer/KidCarrousel/KidContainer/Pink/Setting"]
-margin_top = 104.0
-margin_right = 100.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 0, 30 )
-text = "Pink"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-
-[node name="Button" type="Button" parent="CanvasLayer/KidCarrousel/KidContainer/Pink"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-flat = true
-
-[node name="Jodes" type="Control" parent="CanvasLayer/KidCarrousel/KidContainer"]
-editor/display_folded = true
-margin_left = 312.0
+[node name="MobContainer" type="HBoxContainer" parent="CanvasLayer/MobCarrousel"]
+margin_top = -130.884
 margin_right = 412.0
-margin_bottom = 130.0
-rect_min_size = Vector2( 100, 130 )
-script = ExtResource( 8 )
-
-[node name="Setting" type="VBoxContainer" parent="CanvasLayer/KidCarrousel/KidContainer/Jodes"]
-margin_left = 4.0
-margin_right = 104.0
-margin_bottom = 134.0
-
-[node name="ProfilePic" type="TextureRect" parent="CanvasLayer/KidCarrousel/KidContainer/Jodes/Setting"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 12 )
-expand = true
-stretch_mode = 6
-
-[node name="Name" type="Label" parent="CanvasLayer/KidCarrousel/KidContainer/Jodes/Setting"]
-margin_top = 104.0
-margin_right = 100.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 0, 30 )
-text = "jodes"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-
-[node name="Button" type="Button" parent="CanvasLayer/KidCarrousel/KidContainer/Jodes"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-flat = true
+margin_bottom = -0.883972
+script = ExtResource( 10 )
+entity_miniature_node = ExtResource( 9 )
 
 [node name="ChooseTarget" type="Label" parent="CanvasLayer"]
 editor/display_folded = true
@@ -319,12 +201,15 @@ margin_right = -36.0
 margin_bottom = 28.108
 custom_fonts/font = SubResource( 5 )
 text = "Cancel"
-[connection signal="button_down" from="CanvasLayer/BtnContainer/HBoxContainer/ToggleAdminModBtn" to="." method="Toggle_admin_mode"]
-[connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="Toggle_admin_mode"]
+[connection signal="button_down" from="CanvasLayer/BtnContainer/HBoxContainer/ToggleAdminModBtn" to="." method="toggle_admin_mode"]
+[connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="toggle_admin_mode"]
+[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/AddEntityContainer" method="_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_AddKid_button_down"]
-[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="." method="_on_AddMob_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/AddEntityContainer" method="_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_AddMob_button_down"]
+[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/AddEntityContainer" method="_on_Close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_Close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_Close_button_down"]
 [connection signal="value_changed" from="CanvasLayer/KidCarrousel" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_KidCarrousel_value_changed"]
-[connection signal="button_down" from="CanvasLayer/KidCarrousel/KidContainer/BoiledEgg/Button" to="CanvasLayer/KidCarrousel/KidContainer/BoiledEgg" method="_on_Button_button_down"]
-[connection signal="button_down" from="CanvasLayer/KidCarrousel/KidContainer/Drave/Button" to="CanvasLayer/KidCarrousel/KidContainer/Drave" method="_on_Button_button_down"]
-[connection signal="button_down" from="CanvasLayer/KidCarrousel/KidContainer/Pink/Button" to="CanvasLayer/KidCarrousel/KidContainer/Pink" method="_on_Button_button_down"]
-[connection signal="button_down" from="CanvasLayer/KidCarrousel/KidContainer/Jodes/Button" to="CanvasLayer/KidCarrousel/KidContainer/Jodes" method="_on_Button_button_down"]
+[connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_KidCarrousel_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_MobCarrousel_value_changed"]

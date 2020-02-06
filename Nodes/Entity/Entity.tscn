@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Nodes/Entity/Entity.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/VoidSprite.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/PlaceHolder.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/lifeBarBackground.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/lifeBar.png" type="Texture" id=4]
 

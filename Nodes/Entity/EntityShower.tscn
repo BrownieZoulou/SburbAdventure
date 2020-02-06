@@ -98,6 +98,7 @@ margin_right = 292.262
 margin_bottom = -51.0
 texture = ExtResource( 5 )
 expand = true
+stretch_mode = 6
 
 [node name="StatContainer" type="VBoxContainer" parent="."]
 editor/display_folded = true

@@ -3,8 +3,8 @@ extends Node2D
 export(PackedScene) var Entity_node
 export(PackedScene) var Kid_node
 
-var kids = [] #tableau de kids
-var mobs = [] #tableau de mobs
+var kids = [] #tableau de kids sur le terrain
+var mobs = [] #tableau de mobs sur le terrain
 
 var is_admin_mode = true
 var is_entity_focused
@@ -13,18 +13,21 @@ var attack_is_ongoing
 var is_strife_on
 
 var kid_dictionary = {}
-var new_kid_name
+
+var mob_dictionary = {}
 
 func _ready() :
 	load_kid_dictionary()
+	load_mob_dictionary()
 
-func _on_AddMob_button_down():
+func add_mob(mob_values):
 	if(mobs.size()<16) :
-		var new_entity = Entity_node.instance()
-		var new_entity_position =  $PositionManager/MobPositions.get_child(mobs.size()).global_position
-		mobs.insert(mobs.size(), new_entity)
-		new_entity.global_position = new_entity_position
-		get_tree().get_root().add_child(new_entity)
+		var new_mob = Entity_node.instance()
+		var new_mob_position =  $PositionManager/MobPositions.get_child(mobs.size()).global_position
+		new_mob.setup(mob_values)
+		mobs.insert(mobs.size(), new_mob)
+		new_mob.global_position = new_mob_position
+		get_tree().get_root().add_child(new_mob)
 
 
 func add_kid(kid_values):
@@ -64,7 +67,6 @@ func toggle_admin_mode() :
 	reload_entity_shower()
 
 func prepare_attack(iso):
-	print("preparing attack!")
 	attack_is_ongoing = true
 	is_strife_on = iso
 	$CanvasLayer/ChooseTarget.visible = true
@@ -83,3 +85,24 @@ func load_kid(kid_to_spawn) :
 	for one_kid_in_dictionary in kid_dictionary :
 		if(kid_to_spawn == one_kid_in_dictionary.id) :
 			add_kid(one_kid_in_dictionary)
+
+func get_kid_dictionary() :
+	return kid_dictionary
+
+func load_mob_dictionary()  :
+	var new_mob_file = File.new()
+	if not new_mob_file.file_exists("res://DataBase/Mobs/MobsBDD.save"):
+		print( "Error! We don't have a save to load.")
+	else :
+		new_mob_file.open("res://DataBase/Mobs/MobsBDD.save", File.READ)
+		var json_text = new_mob_file.get_as_text()
+		mob_dictionary = JSON.parse(json_text).result.json
+		new_mob_file.close()
+
+func load_mob(mob_to_spawn) :
+	for one_mob_in_dictionary in mob_dictionary :
+		if(mob_to_spawn == one_mob_in_dictionary.id) :
+			add_mob(one_mob_in_dictionary)
+
+func get_mob_dictionary() :
+	return mob_dictionary

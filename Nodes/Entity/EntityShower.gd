@@ -8,6 +8,9 @@ func Toggle_visibility(is_entity_focused, entity_focused, is_admin_mode) :
 		$Name.text = String(entity_focused.get("entity_name"))
 		$Healthbar.max_value = int(entity_focused.get("max_hp"))
 		$Healthbar.value = int(entity_focused.get("hp"))
+		var id = entity_focused.get("id")
+		var profile_pic = load("res://DataBase/Kids/"+id+"/"+id+".png")
+		$ProfilePic.set_texture(profile_pic)
 		if(is_admin_mode) :
 			$HealthPoint.text = "HP: " + String(entity_focused.get("hp")) + "/" + String(entity_focused.get("max_hp"))
 			$StatContainer/Attack.text = "Attack: "+String(entity_focused.get("attack"))
@@ -67,10 +70,8 @@ func _on_Close_button_down():
 func _on_StrifeAttack_button_down():
 	get_tree().get_current_scene().prepare_attack(STRIFE)
 	get_tree().get_current_scene().toggle_entity_focus(self)
-	print("prepare strife attack!")
 
 
 func _on_StrifelessAttack_button_down():
 	get_tree().get_current_scene().prepare_attack(STRIFELESS)
 	get_tree().get_current_scene().toggle_entity_focus(self)
-	print("prepare strifeless attack!")

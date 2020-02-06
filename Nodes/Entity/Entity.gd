@@ -26,13 +26,37 @@ var exp_to_give = 1
 var gritz = 1
 
 func _ready():
-	z_index = global_position.y
+	z_index = float(global_position.y)
 	$Healthbar.max_value = max_hp
 	$Healthbar.value = hp
 
-func attack(target, is_strife_used) :
+func setup(values) :
+	id = values.id
+	entity_name = values.entity_name
+	profile_pic_route = "res://DataBase/Mobs/"+id+"/"+id+".png"
+	profile_pic = load(String(profile_pic_route))
+	$Sprite.set_texture(profile_pic)
+	hp = values.hp
+	max_hp = values.max_hp
+	attack = values.attack
+	armor = values.armor
+	weapon_id = values.weapon_id
+	weapon_name = values.weapon_name
+	weapon_kind = values.weapon_kind
+	weapon_profile_pic = ""
+	weapon_attack = values.weapon_attack
+	strenght = values.strenght
+	perception = values.perception
+	agility = values.agility
+	charisma = values.charisma
+	luck = values.luck
+	strife = values.strife
+	exp_to_give = values.exp_to_give
+	gritz = values.gritz
+
+func attack(target, isu) :
 	anim.play("AttackLeft")
-	if(is_strife_used) :
+	if(isu) :
 		target.GetHit(self, attack + weapon_attack)
 	else:
 		target.GetHit(self, attack)
