@@ -106,3 +106,13 @@ func load_mob(mob_to_spawn) :
 
 func get_mob_dictionary() :
 	return mob_dictionary
+
+func erase_entity(entity_to_erase) :
+	var list_to_check
+	if(entity_to_erase.is_in_group("kid")) :
+		list_to_check = kids
+	else :
+		list_to_check = mobs
+	for one_entity in list_to_check :
+		if(one_entity == entity_to_erase) :
+			print("erasing :" + entity_to_erase.name)

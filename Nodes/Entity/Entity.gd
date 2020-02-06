@@ -81,7 +81,12 @@ func earn_gritz(gritz_earned) :
 	gritz += gritz_earned
 
 func die() :
-	pass
+	anim.play("Die")
+	$DeathTimer.start()
 
 func _on_Button_button_down():
 	strife_scene.toggle_entity_focus(self)
+
+func erase():
+	strife_scene.erase_entity(self)
+
