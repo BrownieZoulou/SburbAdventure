@@ -40,7 +40,7 @@ Kid_node = ExtResource( 3 )
 
 [node name="PositionManager" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
-position = Vector2( 0, 700.334 )
+position = Vector2( 0, 661.471 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -205,11 +205,11 @@ text = "Cancel"
 [connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="toggle_admin_mode"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/AddEntityContainer" method="_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_AddKid_button_down"]
-[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_AddMob_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/AddEntityContainer" method="_button_down"]
-[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_Close_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_AddMob_button_down"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/AddEntityContainer" method="_on_Close_button_down"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_Close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_Close_button_down"]
 [connection signal="value_changed" from="CanvasLayer/KidCarrousel" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_MobCarrousel_value_changed"]

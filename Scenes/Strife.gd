@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var C = get_node("/root/Constants")
+
 export(PackedScene) var Entity_node
 export(PackedScene) var Kid_node
 
@@ -21,17 +23,32 @@ func _ready() :
 	load_mob_dictionary()
 
 func add_mob(mob_values):
-	if(mobs.size()<16) :
+	if(mobs.size()<C.MAX_MOB) :
 		var new_mob = Entity_node.instance()
-		var new_mob_position =  $PositionManager/MobPositions.get_child(mobs.size()).global_position
+		var mob_pos_number = 0
+		var i_is_valid = true
+		for i in range(mobs.size()) :
+			if(mobs[i] is String) :
+				print("mobs position " +String(i)+" isn't valid")
+				mob_pos_number = i
+				i_is_valid = false
+				break
+			else :
+				print("mobs position " +String(i)+" is valid")
+				mob_pos_number += 1
+		print("New Mob Number on " + String(mob_pos_number))
+		var new_mob_position =  $PositionManager/MobPositions.get_child(mob_pos_number).global_position
 		new_mob.setup(mob_values)
-		mobs.insert(mobs.size(), new_mob)
+		if(!i_is_valid) :
+			mobs[mob_pos_number] = new_mob
+		else :
+			mobs.insert(mob_pos_number, new_mob)
 		new_mob.global_position = new_mob_position
 		get_tree().get_root().add_child(new_mob)
 
 
 func add_kid(kid_values):
-	if(kids.size()<8) :
+	if(kids.size()<C.MAX_KID) :
 		var new_kid = Kid_node.instance()
 		var new_kid_position =  $PositionManager/KidPositions.get_child(kids.size()).global_position
 		new_kid.setup(kid_values)
@@ -113,6 +130,10 @@ func erase_entity(entity_to_erase) :
 		list_to_check = kids
 	else :
 		list_to_check = mobs
-	for one_entity in list_to_check :
-		if(one_entity == entity_to_erase) :
-			print("erasing :" + entity_to_erase.name)
+	for i in range(list_to_check.size()) :
+		print(String(i) + " of " + String(list_to_check.size()))
+		if(list_to_check[i] == entity_to_erase) :
+			print("erasing :" + entity_to_erase.name + "number " + String(i))
+			#list_to_check.remove(list_to_check.find(entity_to_erase))
+			list_to_check[i] = ""
+			return
