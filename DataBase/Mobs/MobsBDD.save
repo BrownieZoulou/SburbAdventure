@@ -1,0 +1,23 @@
+{"json" : [
+    {
+      "id" : "Void",
+      "entity_name" : "The Void",
+      "hp" : 1000,
+      "max_hp" : 1000,
+      "attack" : 1,
+      "armor" : 0,
+      "weapon_id" : "VoidWeapon",
+      "weapon_name" : "Void Weapon",
+      "weapon_kind" : "voidKind",
+      "weapon_profile_pic" : "",
+      "weapon_attack" : 1,
+      "strenght" : 1,
+      "perception" : 1,
+      "agility" : 1,
+      "charisma" : 1,
+      "luck" : 1,
+      "strife" : 1,
+      "gritz" : 1,
+      "exp_to_give" : 1000
+    }
+]}

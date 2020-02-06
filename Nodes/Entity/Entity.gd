@@ -3,12 +3,15 @@ extends Node2D
 onready var strife_scene = get_tree().get_current_scene()
 onready var anim = $Anim
 
+var id = "void"
 var entity_name = "the void"
-var profile_pic = ""
+var profile_pic_route = ""
+var profile_pic
 var hp = 10
 var max_hp = 10
 var attack = 1
 var armor = 1
+var weapon_id = ""
 var weapon_name = "void weapon"
 var weapon_kind = "test"
 var weapon_profile_pic = ""
@@ -23,33 +26,62 @@ var exp_to_give = 1
 var gritz = 1
 
 func _ready():
-	z_index = global_position.y
+	z_index = float(global_position.y)
 	$Healthbar.max_value = max_hp
 	$Healthbar.value = hp
 
-func Attack(target, is_strife_used) :
+func setup(values) :
+	id = values.id
+	entity_name = values.entity_name
+	profile_pic_route = "res://DataBase/Mobs/"+id+"/"+id+".png"
+	profile_pic = load(String(profile_pic_route))
+	$Sprite.set_texture(profile_pic)
+	hp = values.hp
+	max_hp = values.max_hp
+	attack = values.attack
+	armor = values.armor
+	weapon_id = values.weapon_id
+	weapon_name = values.weapon_name
+	weapon_kind = values.weapon_kind
+	weapon_profile_pic = ""
+	weapon_attack = values.weapon_attack
+	strenght = values.strenght
+	perception = values.perception
+	agility = values.agility
+	charisma = values.charisma
+	luck = values.luck
+	strife = values.strife
+	exp_to_give = values.exp_to_give
+	gritz = values.gritz
+
+func attack(target, isu) :
 	anim.play("AttackLeft")
-	if(is_strife_used) :
+	if(isu) :
 		target.GetHit(self, attack + weapon_attack)
 	else:
 		target.GetHit(self, attack)
 
-func GetHit(attacker, damage) :
-	if(damage - armor > 0) : hp -= (damage - armor)
-	anim.play("GetHit")
-	$Healthbar.value = hp
+func get_hit(attacker, damage) :
+	if(damage - armor > 0) : 
+		var get_hit_anim = $Anim.get_animation("GetHit")
+		var idx = get_hit_anim.find_track('Healthbar:value')
+		get_hit_anim.track_set_key_value(idx, 0, hp)
+		hp -= (damage - armor)
+		get_hit_anim.track_set_key_value(idx, 1, hp)
+		$Healthbar.value = hp
+		anim.play("GetHit")
 	if(hp <= 0) :
 		if(attacker.is_in_group("kid")) :
-			attacker.EarnExp(exp_to_give)
-		attacker.EarnGritz(gritz)
+			attacker.earn_exp(exp_to_give)
+		attacker.earn_gritz(gritz)
 		$Healthbar.value = 0
-		Die()
+		die()
 
-func EarnGritz(gritz_earned) :
+func earn_gritz(gritz_earned) :
 	gritz += gritz_earned
 
-func Die() :
+func die() :
 	pass
 
 func _on_Button_button_down():
-	strife_scene.Toggle_entity_focus(self)
+	strife_scene.toggle_entity_focus(self)
