@@ -23,14 +23,14 @@ font_data = ExtResource( 5 )
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 5 )
-
 [sub_resource type="DynamicFont" id=4]
-size = 20
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 5 )
 
 [node name="Strife" type="Node2D"]
@@ -40,7 +40,7 @@ Kid_node = ExtResource( 3 )
 
 [node name="PositionManager" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
-position = Vector2( 0, 700.334 )
+position = Vector2( 0, 661.471 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -139,7 +139,7 @@ margin_left = -38.0
 margin_top = -90.1371
 margin_right = 38.0
 margin_bottom = -40.1371
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Close"
 
 [node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 7 )]
@@ -186,7 +186,7 @@ margin_left = -91.0
 margin_top = -92.0
 margin_right = 94.0
 margin_bottom = -41.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Choose a target !"
 align = 1
 autowrap = true
@@ -199,7 +199,7 @@ margin_left = 36.0
 margin_top = 8.10803
 margin_right = -36.0
 margin_bottom = 28.108
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Cancel"
 [connection signal="button_down" from="CanvasLayer/BtnContainer/HBoxContainer/ToggleAdminModBtn" to="." method="toggle_admin_mode"]
 [connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="toggle_admin_mode"]

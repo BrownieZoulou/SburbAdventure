@@ -57,9 +57,9 @@ func setup(values) :
 func attack(target, isu) :
 	anim.play("AttackLeft")
 	if(isu) :
-		target.GetHit(self, attack + weapon_attack)
+		target.get_hit(self, attack + weapon_attack)
 	else:
-		target.GetHit(self, attack)
+		target.get_hit(self, attack)
 
 func get_hit(attacker, damage) :
 	if(damage - armor > 0) : 
@@ -81,7 +81,12 @@ func earn_gritz(gritz_earned) :
 	gritz += gritz_earned
 
 func die() :
-	pass
+	anim.play("Die")
+	$DeathTimer.start()
 
 func _on_Button_button_down():
 	strife_scene.toggle_entity_focus(self)
+
+func erase():
+	strife_scene.erase_entity(self)
+

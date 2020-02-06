@@ -7,7 +7,6 @@ func _ready():
 	pass
 
 func _on_AddMob_button_down():
-	reset()
 	get_parent().visible = true
 	var mob_dictionary = get_tree().get_current_scene().get_mob_dictionary()
 	for one_mob in mob_dictionary :
@@ -22,6 +21,7 @@ func entity_choosed(mob_choosed) :
 	get_tree().get_current_scene().load_mob(mob_choosed)
 	get_parent().visible = false
 	get_parent().get_parent().get_node('AddEntityContainer').reset()
+	reset()
 
 
 func _on_MobCarrousel_value_changed(value):
@@ -32,6 +32,7 @@ func _on_MobCarrousel_value_changed(value):
 
 func _on_Close_button_down():
 	get_parent().visible = false
+	reset()
 
 func reset() :
 	for one_child in get_children() :
