@@ -57,9 +57,9 @@ func setup(values) :
 func attack(target, isu) :
 	anim.play("AttackLeft")
 	if(isu) :
-		target.GetHit(self, attack + weapon_attack)
+		target.get_hit(self, attack + weapon_attack)
 	else:
-		target.GetHit(self, attack)
+		target.get_hit(self, attack)
 
 func get_hit(attacker, damage) :
 	if(damage - armor > 0) : 

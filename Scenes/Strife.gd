@@ -22,39 +22,36 @@ func _ready() :
 	load_kid_dictionary()
 	load_mob_dictionary()
 
-func add_mob(mob_values):
-	if(mobs.size()<C.MAX_MOB) :
-		var new_mob = Entity_node.instance()
-		var mob_pos_number = 0
+func add_entity(entity_value, is_it_kid) :
+	var list_to_check
+	var new_entity
+	var new_entity_position_manager 
+	if(is_it_kid) :
+		list_to_check = kids
+		new_entity = Kid_node.instance()
+		new_entity_position_manager =  $PositionManager/KidPositions
+	else :
+		list_to_check = mobs
+		new_entity = Entity_node.instance()
+		new_entity_position_manager = $PositionManager/MobPositions
+	if(list_to_check.size()<C.MAX_MOB) :
+		var entity_pos_number = 0
 		var i_is_valid = true
-		for i in range(mobs.size()) :
-			if(mobs[i] is String) :
-				print("mobs position " +String(i)+" isn't valid")
-				mob_pos_number = i
+		for i in range(list_to_check.size()) :
+			if(list_to_check[i] is String) :
+				entity_pos_number = i
 				i_is_valid = false
 				break
 			else :
-				print("mobs position " +String(i)+" is valid")
-				mob_pos_number += 1
-		print("New Mob Number on " + String(mob_pos_number))
-		var new_mob_position =  $PositionManager/MobPositions.get_child(mob_pos_number).global_position
-		new_mob.setup(mob_values)
+				entity_pos_number += 1
+		var new_entity_position=  new_entity_position_manager.get_child(entity_pos_number).global_position
+		new_entity.setup(entity_value)
 		if(!i_is_valid) :
-			mobs[mob_pos_number] = new_mob
+			list_to_check[entity_pos_number] = new_entity
 		else :
-			mobs.insert(mob_pos_number, new_mob)
-		new_mob.global_position = new_mob_position
-		get_tree().get_root().add_child(new_mob)
-
-
-func add_kid(kid_values):
-	if(kids.size()<C.MAX_KID) :
-		var new_kid = Kid_node.instance()
-		var new_kid_position =  $PositionManager/KidPositions.get_child(kids.size()).global_position
-		new_kid.setup(kid_values)
-		kids.insert(kids.size(), new_kid)
-		new_kid.global_position = new_kid_position
-		get_tree().get_root().add_child(new_kid)
+			list_to_check.insert(entity_pos_number, new_entity)
+		new_entity.global_position = new_entity_position
+		get_tree().get_root().add_child(new_entity)
 
 func toggle_entity_focus(e) :
 	if(entity_focused == e || e == $CanvasLayer/EntityShower) : #Hide entity shower if with click a second time or if we click the close button
@@ -101,7 +98,7 @@ func load_kid_dictionary()  :
 func load_kid(kid_to_spawn) :
 	for one_kid_in_dictionary in kid_dictionary :
 		if(kid_to_spawn == one_kid_in_dictionary.id) :
-			add_kid(one_kid_in_dictionary)
+			add_entity(one_kid_in_dictionary, true)
 
 func get_kid_dictionary() :
 	return kid_dictionary
@@ -119,7 +116,7 @@ func load_mob_dictionary()  :
 func load_mob(mob_to_spawn) :
 	for one_mob_in_dictionary in mob_dictionary :
 		if(mob_to_spawn == one_mob_in_dictionary.id) :
-			add_mob(one_mob_in_dictionary)
+			add_entity(one_mob_in_dictionary, false)
 
 func get_mob_dictionary() :
 	return mob_dictionary
