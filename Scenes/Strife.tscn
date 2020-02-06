@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Strife.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Entity/Entity.tscn" type="PackedScene" id=2]
@@ -6,31 +6,67 @@
 [ext_resource path="res://Nodes/PositionManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ressources/Fonts/amiga4ever.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Nodes/AddEntityContainer.gd" type="Script" id=6]
-[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Nodes/KidCarrousel.gd" type="Script" id=8]
-[ext_resource path="res://Nodes/EntityMiniature.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Nodes/MobCarrousel.gd" type="Script" id=10]
+[ext_resource path="res://Nodes/AddGameElement.gd" type="Script" id=7]
+[ext_resource path="res://Sprites/PlaceHolder.png" type="Texture" id=8]
+[ext_resource path="res://Nodes/Entity/EntityShower.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Nodes/KidCarrousel.gd" type="Script" id=10]
+[ext_resource path="res://Nodes/EntityMiniature.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Nodes/MobCarrousel.gd" type="Script" id=12]
+[ext_resource path="res://Nodes/AddElementPanel.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 12
+size = 30
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 30
+size = 12
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 20
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 11
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 19
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=16]
 font_data = ExtResource( 5 )
 
 [node name="Strife" type="Node2D"]
@@ -54,55 +90,6 @@ align = 1
 valign = 2
 autowrap = true
 
-[node name="BtnContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchor_right = 1.0
-margin_top = 75.327
-margin_bottom = 106.327
-custom_constants/separation = 30
-alignment = 1
-
-[node name="SaveBtn" type="Button" parent="CanvasLayer/BtnContainer"]
-margin_left = 173.0
-margin_right = 229.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
-custom_constants/hseparation = 0
-text = "Save"
-
-[node name="ChangeBackgroundBtn" type="Button" parent="CanvasLayer/BtnContainer"]
-margin_left = 259.0
-margin_right = 457.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
-custom_constants/hseparation = 0
-text = "Change Background"
-
-[node name="AddElementBtn" type="Button" parent="CanvasLayer/BtnContainer"]
-margin_left = 487.0
-margin_right = 672.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
-custom_constants/hseparation = 0
-text = "Add game element"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BtnContainer"]
-margin_left = 702.0
-margin_right = 850.0
-margin_bottom = 31.0
-
-[node name="ToggleAdminModBtn" type="Button" parent="CanvasLayer/BtnContainer/HBoxContainer"]
-margin_right = 120.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
-custom_constants/hseparation = 0
-text = "Admin Mode"
-
-[node name="CheckBox" type="CheckBox" parent="CanvasLayer/BtnContainer/HBoxContainer"]
-margin_left = 124.0
-margin_right = 148.0
-margin_bottom = 31.0
-pressed = true
-
 [node name="AddEntityContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchor_top = 0.5
 anchor_right = 1.0
@@ -118,7 +105,7 @@ margin_left = 362.0
 margin_right = 412.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "+"
 
 [node name="AddMob" type="Button" parent="CanvasLayer/AddEntityContainer"]
@@ -126,8 +113,121 @@ margin_left = 612.0
 margin_right = 662.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "+"
+
+[node name="BtnContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_top = 75.327
+margin_bottom = 106.327
+custom_constants/separation = 30
+alignment = 1
+
+[node name="SaveBtn" type="Button" parent="CanvasLayer/BtnContainer"]
+margin_left = 173.0
+margin_right = 229.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 3 )
+custom_constants/hseparation = 0
+text = "Save"
+
+[node name="ChangeBackgroundBtn" type="Button" parent="CanvasLayer/BtnContainer"]
+margin_left = 259.0
+margin_right = 457.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 3 )
+custom_constants/hseparation = 0
+text = "Change Background"
+
+[node name="AddElementBtn" type="Button" parent="CanvasLayer/BtnContainer"]
+margin_left = 487.0
+margin_right = 672.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 3 )
+custom_constants/hseparation = 0
+text = "Add game element"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BtnContainer"]
+margin_left = 702.0
+margin_right = 850.0
+margin_bottom = 31.0
+
+[node name="ToggleAdminModBtn" type="Button" parent="CanvasLayer/BtnContainer/HBoxContainer"]
+margin_right = 120.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 3 )
+custom_constants/hseparation = 0
+text = "Admin Mode"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/BtnContainer/HBoxContainer"]
+margin_left = 124.0
+margin_right = 148.0
+margin_bottom = 31.0
+pressed = true
+
+[node name="AddGameElement" type="Control" parent="CanvasLayer"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 124.0
+margin_right = 248.0
+margin_bottom = 330.0
+script = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AddGameElement"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="AddKidElement" type="Button" parent="CanvasLayer/AddGameElement"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 11.0
+margin_top = -25.7853
+margin_right = -11.0
+margin_bottom = 4.21466
+custom_fonts/font = SubResource( 4 )
+text = "Add a Kid"
+
+[node name="AddMobElement" type="Button" parent="CanvasLayer/AddGameElement"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 11.0
+margin_top = 17.5463
+margin_right = -11.0
+margin_bottom = 47.5463
+custom_fonts/font = SubResource( 4 )
+text = "Add a Mob"
+
+[node name="Cancel" type="Button" parent="CanvasLayer/AddGameElement"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 11.0
+margin_top = 62.4255
+margin_right = -11.0
+margin_bottom = 92.4255
+custom_fonts/font = SubResource( 4 )
+text = "Cancel"
+
+[node name="Label" type="Label" parent="CanvasLayer/AddGameElement"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -82.5
+margin_right = -8.0
+margin_bottom = -28.5
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "What do you want to add ?"
+align = 1
+autowrap = true
 
 [node name="Close" type="Button" parent="CanvasLayer"]
 visible = false
@@ -139,13 +239,14 @@ margin_left = -38.0
 margin_top = -90.1371
 margin_right = 38.0
 margin_bottom = -40.1371
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "Close"
 
-[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="EntityShower" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
 
 [node name="KidCarrousel" type="HSlider" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 margin_top = 248.317
@@ -157,10 +258,11 @@ ticks_on_borders = true
 margin_top = -130.884
 margin_right = 412.0
 margin_bottom = -0.883972
-script = ExtResource( 8 )
-entity_miniature_node = ExtResource( 9 )
+script = ExtResource( 10 )
+entity_miniature_node = ExtResource( 11 )
 
 [node name="MobCarrousel" type="HSlider" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 margin_top = 248.317
@@ -172,8 +274,8 @@ ticks_on_borders = true
 margin_top = -130.884
 margin_right = 412.0
 margin_bottom = -0.883972
-script = ExtResource( 10 )
-entity_miniature_node = ExtResource( 9 )
+script = ExtResource( 12 )
+entity_miniature_node = ExtResource( 11 )
 
 [node name="ChooseTarget" type="Label" parent="CanvasLayer"]
 editor/display_folded = true
@@ -186,7 +288,7 @@ margin_left = -91.0
 margin_top = -92.0
 margin_right = 94.0
 margin_bottom = -41.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Choose a target !"
 align = 1
 autowrap = true
@@ -199,17 +301,613 @@ margin_left = 36.0
 margin_top = 8.10803
 margin_right = -36.0
 margin_bottom = 28.108
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Cancel"
-[connection signal="button_down" from="CanvasLayer/BtnContainer/HBoxContainer/ToggleAdminModBtn" to="." method="toggle_admin_mode"]
-[connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="toggle_admin_mode"]
+
+[node name="AddElementPanel" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AddElementPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel"]
+anchor_right = 1.0
+margin_top = 32.8771
+margin_bottom = 63.8771
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Adding an element"
+align = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/AddElementPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -485.0
+margin_top = 67.8302
+margin_right = 485.0
+margin_bottom = 81.8302
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "In doubt, contact main dev. id must be carefully choosed, element id MUST be sprite name"
+align = 1
+valign = 1
+
+[node name="CreateElement" type="Button" parent="CanvasLayer/AddElementPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -441.0
+margin_top = -79.2982
+margin_right = -72.0
+margin_bottom = -31.2982
+custom_fonts/font = SubResource( 13 )
+text = "CREATE !!"
+
+[node name="Cancel" type="Button" parent="CanvasLayer/AddElementPanel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 68.4774
+margin_top = -78.0632
+margin_right = 437.477
+margin_bottom = -30.0632
+custom_fonts/font = SubResource( 14 )
+text = "Cancel"
+
+[node name="EntityValues" type="VBoxContainer" parent="CanvasLayer/AddElementPanel" groups=[
+"entityValue",
+]]
+anchor_bottom = 1.0
+margin_left = 47.0
+margin_top = 108.0
+margin_right = 487.0
+margin_bottom = -340.0
+
+[node name="id" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues" groups=[
+"string",
+]]
+editor/display_folded = true
+margin_right = 440.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/id"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ID : "
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/id"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="entity_name" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues" groups=[
+"string",
+]]
+editor/display_folded = true
+margin_top = 34.0
+margin_right = 440.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/entity_name"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Name :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/entity_name"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="max_hp" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 68.0
+margin_right = 440.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/max_hp"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Max HP :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/max_hp"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="attack" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 102.0
+margin_right = 440.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/attack"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Attack : "
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/attack"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="armor" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 136.0
+margin_right = 440.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/armor"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Armor :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/armor"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="strenght" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 170.0
+margin_right = 440.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/strenght"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Strenght :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/strenght"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="perception" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 204.0
+margin_right = 440.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/perception"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Perception :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/perception"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="agility" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 238.0
+margin_right = 440.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/agility"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Agility :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/agility"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="charisma" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 272.0
+margin_right = 440.0
+margin_bottom = 302.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/charisma"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Charisma :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/charisma"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="luck" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 306.0
+margin_right = 440.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/luck"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Luck :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/luck"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="strife" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+editor/display_folded = true
+margin_top = 340.0
+margin_right = 440.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/strife"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Strife :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/strife"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="gritz" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
+margin_top = 374.0
+margin_right = 440.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/EntityValues/gritz"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gritz :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/EntityValues/gritz"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="WeaponValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel" groups=[
+"entityValue",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -494.0
+margin_top = 107.173
+margin_right = -54.0
+margin_bottom = -514.827
+
+[node name="weapon_id" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue" groups=[
+"string",
+]]
+editor/display_folded = true
+margin_right = 440.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_id"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon ID :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_id"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="weapon_name" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue" groups=[
+"string",
+]]
+editor/display_folded = true
+margin_top = 34.0
+margin_right = 440.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_name"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon name :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_name"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="weapon_kind" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue" groups=[
+"string",
+]]
+editor/display_folded = true
+margin_top = 68.0
+margin_right = 440.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_kind"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon Kind :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_kind"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="weapon_attack" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue"]
+editor/display_folded = true
+margin_top = 102.0
+margin_right = 440.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_attack"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon Attk :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/WeaponValue/weapon_attack"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="KidValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel" groups=[
+"kidValue",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -494.0
+margin_top = 276.947
+margin_right = -54.0
+margin_bottom = -345.053
+
+[node name="level" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/KidValue"]
+editor/display_folded = true
+margin_right = 440.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/KidValue/level"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Level :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/KidValue/level"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="experience" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/KidValue"]
+editor/display_folded = true
+margin_top = 34.0
+margin_right = 440.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/KidValue/experience"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Experience :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/KidValue/experience"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="new_next_level_experience_needed" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/KidValue"]
+editor/display_folded = true
+margin_top = 68.0
+margin_right = 440.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 440, 30 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/KidValue/new_next_level_experience_needed"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Next Lvl exp :"
+align = 1
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/KidValue/new_next_level_experience_needed"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_fonts/font = SubResource( 11 )
+
+[node name="SpriteValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel"]
+editor/display_folded = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -489.67
+margin_top = 47.0211
+margin_right = -98.6702
+margin_bottom = 152.021
+
+[node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/SpriteValue"]
+margin_right = 391.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Add Sprite"
+
+[node name="Button" type="Button" parent="CanvasLayer/AddElementPanel/SpriteValue"]
+margin_top = 24.0
+margin_right = 391.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = SubResource( 16 )
+text = "Open File Explorer"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/SpriteValue"]
+margin_top = 68.0
+margin_right = 391.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 390, 30 )
+
+[node name="ErrorDisplayer" type="Label" parent="CanvasLayer/AddElementPanel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -203.0
+margin_bottom = -87.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/AddEntityContainer" method="_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_AddKid_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/AddEntityContainer" method="_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_AddMob_button_down"]
+[connection signal="button_down" from="CanvasLayer/BtnContainer/AddElementBtn" to="CanvasLayer/AddGameElement" method="_on_AddElementBtn_button_down"]
+[connection signal="button_down" from="CanvasLayer/BtnContainer/HBoxContainer/ToggleAdminModBtn" to="." method="toggle_admin_mode"]
+[connection signal="pressed" from="CanvasLayer/BtnContainer/HBoxContainer/CheckBox" to="." method="toggle_admin_mode"]
+[connection signal="button_down" from="CanvasLayer/AddGameElement/AddKidElement" to="CanvasLayer/AddGameElement" method="_on_AddKidElement_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddGameElement/AddMobElement" to="CanvasLayer/AddGameElement" method="_on_AddMobElement_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddGameElement/Cancel" to="CanvasLayer/AddGameElement" method="hide"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/AddEntityContainer" method="_on_Close_button_down"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_Close_button_down"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_Close_button_down"]
 [connection signal="value_changed" from="CanvasLayer/KidCarrousel" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_MobCarrousel_value_changed"]
+[connection signal="button_down" from="CanvasLayer/AddElementPanel/CreateElement" to="CanvasLayer/AddElementPanel" method="_on_CreateElement_button_down"]
+[connection signal="button_down" from="CanvasLayer/AddElementPanel/Cancel" to="CanvasLayer/AddElementPanel" method="hide"]
