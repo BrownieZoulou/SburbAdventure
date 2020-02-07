@@ -92,7 +92,7 @@ func load_kid_dictionary()  :
 	else :
 		new_kid_file.open("res://DataBase/Kids/KidsBDD.save", File.READ)
 		var json_text = new_kid_file.get_as_text()
-		kid_dictionary = JSON.parse(json_text).result
+		kid_dictionary = JSON.parse(json_text).result.json
 		new_kid_file.close()
 
 func load_kid(kid_to_spawn) :

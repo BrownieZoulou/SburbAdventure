@@ -6,7 +6,7 @@ var WITH_MOB = false
 var WITH_KID = true
 
 func _on_AddElementBtn_button_down():
-	self.visible = true
+	self.visible = !self.visible
 
 func hide() :
 	self.visible = false

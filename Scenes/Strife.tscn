@@ -91,26 +91,25 @@ valign = 2
 autowrap = true
 
 [node name="AddEntityContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -93.0002
-margin_bottom = -43.0002
+margin_left = 362.0
+margin_top = 274.02
+margin_right = -362.0
+margin_bottom = 324.02
 custom_constants/separation = 200
 alignment = 1
 script = ExtResource( 6 )
 
 [node name="AddKid" type="Button" parent="CanvasLayer/AddEntityContainer"]
-margin_left = 362.0
-margin_right = 412.0
+margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 2 )
 text = "+"
 
 [node name="AddMob" type="Button" parent="CanvasLayer/AddEntityContainer"]
-margin_left = 612.0
-margin_right = 662.0
+margin_left = 250.0
+margin_right = 300.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 2 )
@@ -279,7 +278,6 @@ entity_miniature_node = ExtResource( 11 )
 
 [node name="ChooseTarget" type="Label" parent="CanvasLayer"]
 editor/display_folded = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -907,8 +905,8 @@ autowrap = true
 [connection signal="button_down" from="CanvasLayer/AddGameElement/AddMobElement" to="CanvasLayer/AddGameElement" method="_on_AddMobElement_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddGameElement/Cancel" to="CanvasLayer/AddGameElement" method="hide"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/AddEntityContainer" method="_on_Close_button_down"]
-[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_Close_button_down"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_Close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_Close_button_down"]
 [connection signal="value_changed" from="CanvasLayer/KidCarrousel" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_MobCarrousel_value_changed"]

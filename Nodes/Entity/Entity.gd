@@ -56,12 +56,14 @@ func setup(values) :
 
 func attack(target, isu) :
 	anim.play("AttackLeft")
+	print("J'attaque !")
 	if(isu) :
 		target.get_hit(self, attack + weapon_attack)
 	else:
 		target.get_hit(self, attack)
 
 func get_hit(attacker, damage) :
+	print( "Je me fait toucher !")
 	if(damage - armor > 0) : 
 		var get_hit_anim = $Anim.get_animation("GetHit")
 		var idx = get_hit_anim.find_track('Healthbar:value')
@@ -70,6 +72,8 @@ func get_hit(attacker, damage) :
 		get_hit_anim.track_set_key_value(idx, 1, hp)
 		$Healthbar.value = hp
 		anim.play("GetHit")
+	else :
+		anim.play("Protect")
 	if(hp <= 0) :
 		if(attacker.is_in_group("kid")) :
 			attacker.earn_exp(exp_to_give)

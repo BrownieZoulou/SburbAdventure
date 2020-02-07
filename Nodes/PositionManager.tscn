@@ -8,9 +8,7 @@ script = ExtResource( 1 )
 Position_node = ExtResource( 2 )
 
 [node name="KidPositions" type="Position2D" parent="."]
-visible = false
 position = Vector2( 50, 0 )
 
 [node name="MobPositions" type="Position2D" parent="."]
-visible = false
 position = Vector2( 970, 0 )
