@@ -278,6 +278,7 @@ entity_miniature_node = ExtResource( 11 )
 
 [node name="ChooseTarget" type="Label" parent="CanvasLayer"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -331,8 +332,9 @@ margin_top = 67.8302
 margin_right = 485.0
 margin_bottom = 81.8302
 custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "In doubt, contact main dev. id must be carefully choosed, element id MUST be sprite name"
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "In doubt, contact main dev. ID must be carefully choosed, element ID MUST be sprite name.
+Please remember to apply PascalCase for ID (ThisIsAnExemple)"
 align = 1
 valign = 1
 
@@ -855,7 +857,6 @@ rect_min_size = Vector2( 200, 30 )
 custom_fonts/font = SubResource( 14 )
 
 [node name="SpriteValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -866,15 +867,15 @@ margin_right = -98.6702
 margin_bottom = 152.021
 
 [node name="Label" type="Label" parent="CanvasLayer/AddElementPanel/SpriteValue"]
-margin_right = 391.0
+margin_right = 390.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Add Sprite"
 
-[node name="Button" type="Button" parent="CanvasLayer/AddElementPanel/SpriteValue"]
+[node name="SpriteButton" type="Button" parent="CanvasLayer/AddElementPanel/SpriteValue"]
 margin_top = 24.0
-margin_right = 391.0
+margin_right = 390.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = SubResource( 16 )
@@ -882,7 +883,7 @@ text = "Open File Explorer"
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer/AddElementPanel/SpriteValue"]
 margin_top = 68.0
-margin_right = 391.0
+margin_right = 390.0
 margin_bottom = 98.0
 rect_min_size = Vector2( 390, 30 )
 
@@ -912,3 +913,4 @@ autowrap = true
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_MobCarrousel_value_changed"]
 [connection signal="button_down" from="CanvasLayer/AddElementPanel/CreateElement" to="CanvasLayer/AddElementPanel" method="_on_CreateElement_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddElementPanel/Cancel" to="CanvasLayer/AddElementPanel" method="hide"]
+[connection signal="button_down" from="CanvasLayer/AddElementPanel/SpriteValue/SpriteButton" to="CanvasLayer/AddElementPanel" method="_on_SpriteButton_button_down"]

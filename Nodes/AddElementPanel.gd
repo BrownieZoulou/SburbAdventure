@@ -77,13 +77,58 @@ func _on_CreateElement_button_down():
 
 func save_entity() :
 	print("success!!!")
-	print(String(dictionary_to_save))
 	var save_element = File.new()
 	var save_route = ""
+	var loaded_dictionary
 	if(is_it_kid) :
 		save_route = "res://Database/Kids/KidsBDD.save"
+		loaded_dictionary = get_tree().get_current_scene().get_kid_dictionary()
 	else :
 		save_route = "res://Database/Mobs/MobsBDD.save"
+		loaded_dictionary = get_tree().get_current_scene().get_kid_dictionary()
+	var d = []
+	d.append(dictionary_to_save)
+	dictionary_to_save = loaded_dictionary + d
+	var json_dictionary = {}
+	json_dictionary["json"] = dictionary_to_save
+	var json_file = to_json(json_dictionary)
 	save_element.open(save_route, File.WRITE)
-	save_element.store_line(to_json(dictionary_to_save))
+	save_element.store_line(json_file)
 	save_element.close()
+	if(is_it_kid) :
+		get_tree().get_current_scene().set_kid_dictionary(dictionary_to_save)
+	else :
+		get_tree().get_current_scene().set_mob_dictionary(dictionary_to_save)
+
+
+func _on_SpriteButton_button_down():
+	var success = true
+	var error = ""
+	
+	var path = "file://C:/Users/Brown/Desktop/Void.png"
+	var img = Image.new()
+	var tex = ImageTexture.new()
+	if(img.load(path)) :
+		print("success?")
+		var dir_path = "res://DataBase/"
+		if(is_it_kid) :
+			dir_path += "Kids/"
+		else :
+			dir_path += "Mobs/"
+		var dir = Directory.new()
+		dir.open(dir_path)
+		var id = get_node("EntityValues/id/TextEdit").text
+		if(id == "" || id == null) :
+			error = "Set up an ID first !!!"
+			success = false
+		else :
+			dir.make_dir(String(id))
+		print(dir_path+id)
+		img.save_png(dir_path+id)
+	else:
+		print("wtf is happening")
+	
+	if (success) :
+		pass
+	else:
+		$ErrorDisplayer.set_text(error)
