@@ -46,20 +46,20 @@ font_data = ExtResource( 5 )
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=10]
 size = 11
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=14]
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=15]
@@ -332,7 +332,7 @@ margin_left = -485.0
 margin_top = 67.8302
 margin_right = 485.0
 margin_bottom = 81.8302
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "In doubt, contact main dev. id must be carefully choosed, element id MUST be sprite name"
 align = 1
@@ -347,7 +347,7 @@ margin_left = -441.0
 margin_top = -79.2982
 margin_right = -72.0
 margin_bottom = -31.2982
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 11 )
 text = "CREATE !!"
 
 [node name="Cancel" type="Button" parent="CanvasLayer/AddElementPanel"]
@@ -357,12 +357,13 @@ margin_left = 68.4774
 margin_top = -78.0632
 margin_right = 437.477
 margin_bottom = -30.0632
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 12 )
 text = "Cancel"
 
 [node name="EntityValues" type="VBoxContainer" parent="CanvasLayer/AddElementPanel" groups=[
 "entityValue",
 ]]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_left = 47.0
 margin_top = 108.0
@@ -381,7 +382,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "ID : "
 align = 1
@@ -392,7 +393,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="entity_name" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues" groups=[
 "string",
@@ -407,7 +408,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Name :"
 align = 1
@@ -418,7 +419,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="max_hp" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -431,7 +432,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Max HP :"
 align = 1
@@ -442,7 +443,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="attack" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -455,7 +456,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Attack : "
 align = 1
@@ -466,7 +467,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="armor" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -479,7 +480,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Armor :"
 align = 1
@@ -490,7 +491,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="strenght" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -503,7 +504,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Strenght :"
 align = 1
@@ -514,7 +515,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="perception" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -527,7 +528,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Perception :"
 align = 1
@@ -538,7 +539,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="agility" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -551,7 +552,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Agility :"
 align = 1
@@ -562,7 +563,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="charisma" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -575,7 +576,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Charisma :"
 align = 1
@@ -586,7 +587,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="luck" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -599,7 +600,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Luck :"
 align = 1
@@ -610,7 +611,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="strife" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 editor/display_folded = true
@@ -623,7 +624,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Strife :"
 align = 1
@@ -634,7 +635,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="gritz" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/EntityValues"]
 margin_top = 374.0
@@ -646,7 +647,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gritz :"
 align = 1
@@ -657,11 +658,12 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="WeaponValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel" groups=[
 "entityValue",
 ]]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -682,7 +684,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon ID :"
 align = 1
@@ -693,7 +695,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="weapon_name" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue" groups=[
 "string",
@@ -708,7 +710,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon name :"
 align = 1
@@ -719,7 +721,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="weapon_kind" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue" groups=[
 "string",
@@ -734,7 +736,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon Kind :"
 align = 1
@@ -745,7 +747,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="weapon_attack" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/WeaponValue"]
 editor/display_folded = true
@@ -758,7 +760,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon Attk :"
 align = 1
@@ -769,11 +771,12 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="KidValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel" groups=[
 "kidValue",
 ]]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -792,7 +795,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Level :"
 align = 1
@@ -803,7 +806,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="experience" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/KidValue"]
 editor/display_folded = true
@@ -816,7 +819,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Experience :"
 align = 1
@@ -827,7 +830,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="new_next_level_experience_needed" type="HBoxContainer" parent="CanvasLayer/AddElementPanel/KidValue"]
 editor/display_folded = true
@@ -840,7 +843,7 @@ rect_min_size = Vector2( 440, 30 )
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Next Lvl exp :"
 align = 1
@@ -851,7 +854,7 @@ margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 
 [node name="SpriteValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel"]
 editor/display_folded = true
