@@ -105,11 +105,13 @@ func _on_SpriteButton_button_down():
 	var success = true
 	var error = ""
 	
-	var path = "file://C:/Users/Brown/Desktop/Void.png"
+	var path = "C:/Users/Brown/Desktop/Void.png"
 	var img = Image.new()
-	var tex = ImageTexture.new()
-	if(img.load(path)) :
-		print("success?")
+	if(img.load(path) == 0) :
+		print("success")
+		img.load(path)
+		var tex = ImageTexture.new()
+		tex.create_from_image(img)
 		var dir_path = "res://DataBase/"
 		if(is_it_kid) :
 			dir_path += "Kids/"
@@ -123,12 +125,15 @@ func _on_SpriteButton_button_down():
 			success = false
 		else :
 			dir.make_dir(String(id))
-		print(dir_path+id)
-		img.save_png(dir_path+id)
+		img.save_png(dir_path+id+"/"+id+".png")
 	else:
-		print("wtf is happening")
+		print("fail to find sprite")
 	
 	if (success) :
 		pass
 	else:
 		$ErrorDisplayer.set_text(error)
+
+
+func _on_FileDialog_file_selected(path):
+	pass # Replace with function body.

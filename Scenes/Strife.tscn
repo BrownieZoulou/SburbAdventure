@@ -304,7 +304,6 @@ custom_fonts/font = SubResource( 8 )
 text = "Cancel"
 
 [node name="AddElementPanel" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 13 )
@@ -857,6 +856,7 @@ rect_min_size = Vector2( 200, 30 )
 custom_fonts/font = SubResource( 14 )
 
 [node name="SpriteValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -895,6 +895,24 @@ margin_top = -203.0
 margin_bottom = -87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 autowrap = true
+
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer/AddElementPanel"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -233.0
+margin_right = 315.0
+margin_bottom = 233.0
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( ".png" )
+current_dir = "C:/"
+current_path = "C:/"
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/AddEntityContainer" method="_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_AddKid_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddMob" to="CanvasLayer/AddEntityContainer" method="_button_down"]
@@ -909,8 +927,9 @@ autowrap = true
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_Close_button_down"]
 [connection signal="button_down" from="CanvasLayer/Close" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_Close_button_down"]
 [connection signal="value_changed" from="CanvasLayer/KidCarrousel" to="CanvasLayer/KidCarrousel/KidContainer" method="_on_KidCarrousel_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_MobCarrousel_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MobCarrousel" to="CanvasLayer/MobCarrousel/MobContainer" method="_on_KidCarrousel_value_changed"]
 [connection signal="button_down" from="CanvasLayer/AddElementPanel/CreateElement" to="CanvasLayer/AddElementPanel" method="_on_CreateElement_button_down"]
 [connection signal="button_down" from="CanvasLayer/AddElementPanel/Cancel" to="CanvasLayer/AddElementPanel" method="hide"]
 [connection signal="button_down" from="CanvasLayer/AddElementPanel/SpriteValue/SpriteButton" to="CanvasLayer/AddElementPanel" method="_on_SpriteButton_button_down"]
+[connection signal="file_selected" from="CanvasLayer/AddElementPanel/FileDialog" to="CanvasLayer/AddElementPanel" method="_on_FileDialog_file_selected"]
