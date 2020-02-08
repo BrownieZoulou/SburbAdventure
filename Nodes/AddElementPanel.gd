@@ -31,6 +31,8 @@ var new_experience
 var new_next_level_experience_needed
 var new_echeladder
 
+var path_new_img
+
 func open(isk) :
 	self.visible = true
 	is_it_kid = isk
@@ -63,11 +65,16 @@ func _on_CreateElement_button_down():
 						dictionary_to_save[one_value.name] = one_text_edit.get_text()
 					else :
 						if(!one_text_edit.text.is_valid_integer()):
-							error += one_text_edit.get_parent().name +" value is wrong ! Set an Int !** "
+							error += one_text_edit.get_parent().name +" value is wrong ! Set an Int ! ** "
 							success = false
 						else : 
 							self.set(value_path, int(one_text_edit.get_text()))
 							dictionary_to_save[one_value.name] = one_text_edit.get_text()
+	
+	var img = Image.new()
+	if(img.load(path_new_img) != 0) :
+		success = false
+		error += " Couldn't load png file !! **"
 	
 	if (success) :
 		hide()
@@ -76,7 +83,6 @@ func _on_CreateElement_button_down():
 		$ErrorDisplayer.set_text(error)
 
 func save_entity() :
-	print("success!!!")
 	var save_element = File.new()
 	var save_route = ""
 	var loaded_dictionary
@@ -99,41 +105,24 @@ func save_entity() :
 		get_tree().get_current_scene().set_kid_dictionary(dictionary_to_save)
 	else :
 		get_tree().get_current_scene().set_mob_dictionary(dictionary_to_save)
+	
+	var img = Image.new()
+	img.load(path_new_img)
+	var dir_path = "res://DataBase/"
+	if(is_it_kid) :
+		dir_path += "Kids/"
+	else :
+		dir_path += "Mobs/"
+	var dir = Directory.new()
+	dir.open(dir_path)
+	dir.make_dir(String(new_id))
+	img.save_png(dir_path+new_id+"/"+new_id+".png")
 
 
 func _on_SpriteButton_button_down():
-	var success = true
-	var error = ""
-	
-	var path = "C:/Users/Brown/Desktop/Void.png"
-	var img = Image.new()
-	if(img.load(path) == 0) :
-		print("success")
-		img.load(path)
-		var tex = ImageTexture.new()
-		tex.create_from_image(img)
-		var dir_path = "res://DataBase/"
-		if(is_it_kid) :
-			dir_path += "Kids/"
-		else :
-			dir_path += "Mobs/"
-		var dir = Directory.new()
-		dir.open(dir_path)
-		var id = get_node("EntityValues/id/TextEdit").text
-		if(id == "" || id == null) :
-			error = "Set up an ID first !!!"
-			success = false
-		else :
-			dir.make_dir(String(id))
-		img.save_png(dir_path+id+"/"+id+".png")
-	else:
-		print("fail to find sprite")
-	
-	if (success) :
-		pass
-	else:
-		$ErrorDisplayer.set_text(error)
+	$FileDialog.popup()
 
 
 func _on_FileDialog_file_selected(path):
-	pass # Replace with function body.
+	path_new_img = path
+	$SpriteValue/TextEdit.set_text(path)

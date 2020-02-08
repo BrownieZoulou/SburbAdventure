@@ -304,6 +304,7 @@ custom_fonts/font = SubResource( 8 )
 text = "Cancel"
 
 [node name="AddElementPanel" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 13 )
@@ -856,7 +857,6 @@ rect_min_size = Vector2( 200, 30 )
 custom_fonts/font = SubResource( 14 )
 
 [node name="SpriteValue" type="VBoxContainer" parent="CanvasLayer/AddElementPanel"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -911,6 +911,7 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( ".png" )
+show_hidden_files = true
 current_dir = "C:/"
 current_path = "C:/"
 [connection signal="button_down" from="CanvasLayer/AddEntityContainer/AddKid" to="CanvasLayer/AddEntityContainer" method="_button_down"]
