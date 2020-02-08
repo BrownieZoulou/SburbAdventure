@@ -8,7 +8,6 @@ var new_id
 var new_entity_name
 var new_profile_pic_route
 var new_profile_pic
-var new_hp
 var new_max_hp
 var new_attack
 var new_armor
@@ -70,6 +69,7 @@ func _on_CreateElement_button_down():
 						else : 
 							self.set(value_path, int(one_text_edit.get_text()))
 							dictionary_to_save[one_value.name] = one_text_edit.get_text()
+	dictionary_to_save["hp"] = new_max_hp
 	
 	var img = Image.new()
 	if(img.load(path_new_img) != 0) :
@@ -91,7 +91,7 @@ func save_entity() :
 		loaded_dictionary = get_tree().get_current_scene().get_kid_dictionary()
 	else :
 		save_route = "res://Database/Mobs/MobsBDD.save"
-		loaded_dictionary = get_tree().get_current_scene().get_kid_dictionary()
+		loaded_dictionary = get_tree().get_current_scene().get_mob_dictionary()
 	var d = []
 	d.append(dictionary_to_save)
 	dictionary_to_save = loaded_dictionary + d
@@ -117,6 +117,10 @@ func save_entity() :
 	dir.open(dir_path)
 	dir.make_dir(String(new_id))
 	img.save_png(dir_path+new_id+"/"+new_id+".png")
+	if(is_it_kid) :
+		get_tree().get_current_scene().load_kid_dictionary()
+	else :
+		get_tree().get_current_scene().load_mob_dictionary()
 
 
 func _on_SpriteButton_button_down():

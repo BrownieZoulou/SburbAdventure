@@ -27,8 +27,8 @@ var gritz = 1
 
 func _ready():
 	z_index = float(global_position.y)
-	$Healthbar.max_value = max_hp
-	$Healthbar.value = hp
+	$Healthbar.max_value = float(max_hp)
+	$Healthbar.value = float(hp)
 
 func setup(values) :
 	id = values.id
