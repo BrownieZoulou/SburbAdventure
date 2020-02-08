@@ -103,6 +103,9 @@ func load_kid(kid_to_spawn) :
 func get_kid_dictionary() :
 	return kid_dictionary
 
+func set_kid_dictionary(new_kid_dic) :
+	kid_dictionary = new_kid_dic
+
 func load_mob_dictionary()  :
 	var new_mob_file = File.new()
 	if not new_mob_file.file_exists("res://DataBase/Mobs/MobsBDD.save"):
@@ -120,6 +123,9 @@ func load_mob(mob_to_spawn) :
 
 func get_mob_dictionary() :
 	return mob_dictionary
+
+func set_mob_dictionary(new_mob_dic) :
+	mob_dictionary = new_mob_dic
 
 func erase_entity(entity_to_erase) :
 	var list_to_check
