@@ -5,8 +5,9 @@ var experience = 0
 var next_level_experience_needed = 1
 var echeladder = []
 
-func earn_exp(exp_earned) :
-	experience += exp_earned
+func earn_exp(ee) :
+	ee = float(ee)
+	experience += ee
 	if(experience >= next_level_experience_needed) :
 		level += 1
 		experience -= next_level_experience_needed

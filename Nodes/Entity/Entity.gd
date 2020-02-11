@@ -64,6 +64,9 @@ func attack(target, isu) :
 
 func get_hit(attacker, damage) :
 	print( "Je me fait toucher !")
+	armor = float(armor)
+	damage = float(damage)
+	hp = float(hp)
 	if(damage - armor > 0) : 
 		var get_hit_anim = $Anim.get_animation("GetHit")
 		var idx = get_hit_anim.find_track('Healthbar:value')
@@ -82,6 +85,7 @@ func get_hit(attacker, damage) :
 		die()
 
 func earn_gritz(gritz_earned) :
+	gritz_earned = float(gritz_earned)
 	gritz += gritz_earned
 
 func die() :
