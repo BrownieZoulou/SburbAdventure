@@ -144,7 +144,32 @@ func erase_entity(entity_to_erase) :
 		is_it_kid = false
 	for i in range(list_to_check.size()) :
 		if(list_to_check[i] == entity_to_erase) :
+			entity_to_erase.queue_free()
 			list_to_check[i] = null
+	#if (int(list_to_check.size())%4 == 0) :
+	#	$CanvasLayer/PositionManager.get_closer(is_it_kid)
+
+func erase_focused_entity() :
+	print("erasing focused entity")
+	print(entity_focused)
+	var entity_to_erase = entity_focused
+	var list_to_check
+	var is_it_kid
+	if(entity_to_erase.is_in_group("kid")) :
+		list_to_check = kids
+		is_it_kid = true
+	else :
+		list_to_check = mobs
+		is_it_kid = false
+	for i in range(list_to_check.size()) :
+		if(list_to_check[i] == entity_to_erase) :
+			list_to_check[i] = null
+			print("match !")
+		else : 
+			print("no match...")
+	entity_focused.queue_free()
+	is_entity_focused = false
+	entity_focused = null
 	#if (int(list_to_check.size())%4 == 0) :
 	#	$CanvasLayer/PositionManager.get_closer(is_it_kid)
 
@@ -160,3 +185,19 @@ func reload_entity_position(isk) :
 	for i in range(list_to_reload.size()) :
 		print("test !!")
 		list_to_reload[i].global_position = position_to_reload.get_child(i).global_position
+
+func _on_SaveBtn_button_down():
+	load_kid_dictionary()
+	for one_kid in kids :
+		if(one_kid != null) : 
+			for one_kid_in_dictionary in kid_dictionary :
+				if(one_kid.id == one_kid_in_dictionary.id) :
+					for one_stat in one_kid_in_dictionary :
+						one_kid_in_dictionary[one_stat] = one_kid[one_stat]
+	var save_element = File.new()
+	var json_dictionary = {}
+	json_dictionary["json"] = kid_dictionary
+	var json_file = to_json(json_dictionary)
+	save_element.open("res://DataBase/Kids/KidsBDD.save", File.WRITE)
+	save_element.store_line(json_file)
+	save_element.close()
