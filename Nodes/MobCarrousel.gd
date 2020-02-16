@@ -27,7 +27,6 @@ func entity_choosed(mob_choosed) :
 func _on_MobCarrousel_value_changed(value):
 	self.rect_position.x = (value-previous_value)*-10
 	value = previous_value
-	get_parent().get_parent().get_node('AddEntityContainer').reset()
 
 
 func _on_Close_button_down():

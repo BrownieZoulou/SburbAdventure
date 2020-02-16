@@ -5,6 +5,7 @@ func _on_ChangeWeaponBtn_button_down():
 	$NewWeaponAttack/AttackChangeValue.set_text(String(get_tree().get_current_scene().entity_focused.get("weapon_attack")))
 	$NewWeaponKind/KindChangeValue.set_text(get_tree().get_current_scene().entity_focused.get("weapon_kind"))
 	$NewWeaponName/NameChangeValue.set_text(get_tree().get_current_scene().entity_focused.get("weapon_name"))
+	$NewWeaponId/IdChangeValue.set_text(get_tree().get_current_scene().entity_focused.get("weapon_id"))
 
 func _on_ConfirmChange_button_down():
 	self.visible = false
@@ -14,7 +15,10 @@ func _on_ConfirmChange_button_down():
 		get_tree().get_current_scene().entity_focused.set("weapon_kind",$NewWeaponKind/KindChangeValue.get_text())
 	if(String($NewWeaponName/NameChangeValue.text) != "") :
 		get_tree().get_current_scene().entity_focused.set("weapon_name", $NewWeaponName/NameChangeValue.get_text())
+	if(String($NewWeaponId/IdChangeValue.text) != "") :
+		get_tree().get_current_scene().entity_focused.set("weapon_id", $NewWeaponId/IdChangeValue.get_text())
 	$NewWeaponAttack/AttackChangeValue.set_text("")
 	$NewWeaponName/NameChangeValue.set_text("")
 	$NewWeaponKind/KindChangeValue.set_text("")
+	$NewWeaponId/IdChangeValue.set_text("")
 	get_tree().get_current_scene().reload_entity_shower()

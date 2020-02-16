@@ -37,7 +37,6 @@ font_data = ExtResource( 2 )
 font_data = ExtResource( 2 )
 
 [node name="EntityShower" type="Control"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_top = 123.78
 margin_bottom = 264.78
@@ -247,7 +246,6 @@ custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "Delete"
 
 [node name="DeleteConfirm" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 619.0
 margin_top = -108.0
@@ -321,17 +319,17 @@ script = ExtResource( 7 )
 [node name="TextureRect" type="TextureRect" parent="ChangeWeaponBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -4.0
+margin_bottom = 80.0
 texture = ExtResource( 5 )
 expand = true
 
-[node name="NewWeaponName" type="HBoxContainer" parent="ChangeWeaponBox"]
+[node name="NewWeaponId" type="HBoxContainer" parent="ChangeWeaponBox"]
 anchor_right = 1.0
-margin_top = 11.0
-margin_bottom = 50.0
+margin_top = 74.9372
+margin_bottom = 113.937
 alignment = 1
 
-[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponName"]
+[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponId"]
 margin_left = 25.0
 margin_top = 11.0
 margin_right = 213.0
@@ -340,7 +338,31 @@ custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon name :"
 
-[node name="NameChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponName"]
+[node name="IdChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponId"]
+margin_left = 217.0
+margin_right = 467.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 250, 16 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "test"
+
+[node name="NewWeaponName2" type="HBoxContainer" parent="ChangeWeaponBox"]
+anchor_right = 1.0
+margin_top = 19.1622
+margin_bottom = 58.1622
+alignment = 1
+
+[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponName2"]
+margin_left = 25.0
+margin_top = 11.0
+margin_right = 213.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon name :"
+
+[node name="NameChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponName2"]
 margin_left = 217.0
 margin_right = 467.0
 margin_bottom = 39.0
@@ -351,8 +373,8 @@ text = "test"
 
 [node name="NewWeaponKind" type="HBoxContainer" parent="ChangeWeaponBox"]
 anchor_right = 1.0
-margin_top = 57.6537
-margin_bottom = 96.6537
+margin_top = 121.591
+margin_bottom = 160.591
 alignment = 1
 
 [node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponKind"]
@@ -374,8 +396,8 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="NewWeaponAttack" type="HBoxContainer" parent="ChangeWeaponBox"]
 anchor_right = 1.0
-margin_top = 109.871
-margin_bottom = 147.871
+margin_top = 173.808
+margin_bottom = 211.808
 alignment = 1
 
 [node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponAttack"]
@@ -396,28 +418,15 @@ custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="ConfirmChange" type="Button" parent="ChangeWeaponBox"]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 39.7731
-margin_top = -57.8298
-margin_right = 205.773
-margin_bottom = -12.8298
+margin_left = 109.0
+margin_top = 24.0
+margin_right = -113.0
+margin_bottom = 67.0
 custom_fonts/font = SubResource( 8 )
 text = "Confirm !"
-
-[node name="SaveWeapon" type="Button" parent="ChangeWeaponBox"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -226.644
-margin_top = -57.8298
-margin_right = 7.35565
-margin_bottom = -12.8298
-custom_fonts/font = SubResource( 8 )
-text = "Save as element?"
 [connection signal="button_down" from="ChangeWeaponBtn" to="ChangeWeaponBox" method="_on_ChangeWeaponBtn_button_down"]
 [connection signal="button_down" from="Close" to="." method="_on_Close_button_down"]
 [connection signal="button_down" from="Delete" to="DeleteConfirm" method="_on_Delete_button_down"]
@@ -427,4 +436,3 @@ text = "Save as element?"
 [connection signal="button_down" from="StrifeAttack" to="." method="_on_StrifeAttack_button_down"]
 [connection signal="button_down" from="StrifelessAttack" to="." method="_on_StrifelessAttack_button_down"]
 [connection signal="button_down" from="ChangeWeaponBox/ConfirmChange" to="ChangeWeaponBox" method="_on_ConfirmChange_button_down"]
-[connection signal="button_down" from="ChangeWeaponBox/SaveWeapon" to="ChangeWeaponBox" method="_on_ConfirmChange_button_down"]
