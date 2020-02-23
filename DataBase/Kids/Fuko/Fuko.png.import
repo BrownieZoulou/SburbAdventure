@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BoiledEgg.png-24532b4de80e7457fa1a1052d978a2f7.stex"
+path="res://.import/Fuko.png-945d523ea7e3de6eaee10bc66c6aaafb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DataBase/Kids/BoiledEgg/BoiledEgg.png"
-dest_files=[ "res://.import/BoiledEgg.png-24532b4de80e7457fa1a1052d978a2f7.stex" ]
+source_file="res://DataBase/Kids/Fuko/Fuko.png"
+dest_files=[ "res://.import/Fuko.png-945d523ea7e3de6eaee10bc66c6aaafb.stex" ]
 
 [params]
 

@@ -150,7 +150,6 @@ func erase_entity(entity_to_erase) :
 	#	$CanvasLayer/PositionManager.get_closer(is_it_kid)
 
 func erase_focused_entity() :
-	print("erasing focused entity")
 	print(entity_focused)
 	var entity_to_erase = entity_focused
 	var list_to_check
@@ -164,9 +163,6 @@ func erase_focused_entity() :
 	for i in range(list_to_check.size()) :
 		if(list_to_check[i] == entity_to_erase) :
 			list_to_check[i] = null
-			print("match !")
-		else : 
-			print("no match...")
 	entity_focused.queue_free()
 	is_entity_focused = false
 	entity_focused = null
@@ -201,3 +197,8 @@ func _on_SaveBtn_button_down():
 	save_element.open("res://DataBase/Kids/KidsBDD.save", File.WRITE)
 	save_element.store_line(json_file)
 	save_element.close()
+
+func close_carrousels() :
+	$CanvasLayer/KidCarrousel/KidContainer._on_Close_button_down()
+	$CanvasLayer/MobCarrousel/MobContainer._on_Close_button_down()
+	$CanvasLayer/Close.visible = false

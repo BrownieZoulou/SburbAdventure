@@ -56,14 +56,12 @@ func setup(values) :
 
 func attack(target, isu) :
 	anim.play("AttackLeft")
-	print("J'attaque !")
 	if(isu) :
 		target.get_hit(self, attack + weapon_attack)
 	else:
 		target.get_hit(self, attack)
 
 func get_hit(attacker, damage) :
-	print( "Je me fait toucher !")
 	armor = float(armor)
 	damage = float(damage)
 	hp = float(hp)
@@ -86,7 +84,7 @@ func get_hit(attacker, damage) :
 
 func earn_gritz(gritz_earned) :
 	gritz_earned = float(gritz_earned)
-	gritz += gritz_earned
+	gritz = float(gritz) + gritz_earned
 
 func die() :
 	anim.play("Die")
@@ -94,6 +92,7 @@ func die() :
 
 func _on_Button_button_down():
 	strife_scene.toggle_entity_focus(self)
+	get_tree().get_current_scene().close_carrousels()
 
 func erase():
 	strife_scene.erase_entity(self)

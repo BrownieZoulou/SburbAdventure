@@ -29,6 +29,11 @@ var new_level
 var new_experience
 var new_next_level_experience_needed
 var new_echeladder
+var new_coef_strenght
+var new_coef_perception
+var new_coef_agility
+var new_coef_charisma
+var new_coef_luck
 
 var path_new_img
 
@@ -37,8 +42,10 @@ func open(isk) :
 	is_it_kid = isk
 	if(is_it_kid) :
 		$KidValue.visible = true
+		$StatsCoef.visible = true
 	else :
 		$KidValue.visible = false
+		$StatsCoef.visible = false
 	
 
 func hide():
@@ -52,7 +59,7 @@ func _on_CreateElement_button_down():
 	for one_child in self.get_children() :
 		if(one_child.is_in_group("entityValue") || one_child.is_in_group("kidValue") && is_it_kid) :
 			for one_value in one_child.get_children() :
-				var one_text_edit = one_value.get_child(1)
+				var one_text_edit = one_value.find_node("TextEdit")
 				if(one_text_edit.get_text() == "" || one_text_edit.get_text() == null) :
 					success = false
 					error += String(one_text_edit.get_parent().get("name")) + " value not Set ! **"
@@ -63,13 +70,15 @@ func _on_CreateElement_button_down():
 						self.set(value_path, one_text_edit.get_text())
 						dictionary_to_save[one_value.name] = one_text_edit.get_text()
 					else :
-						if(!one_text_edit.text.is_valid_integer()):
-							error += one_text_edit.get_parent().name +" value is wrong ! Set an Int ! ** "
+						if(!one_text_edit.text.is_valid_float()):
+							error += one_text_edit.get_parent().name +" value is wrong ! Set a float ! ** "
 							success = false
 						else : 
 							self.set(value_path, int(one_text_edit.get_text()))
 							dictionary_to_save[one_value.name] = one_text_edit.get_text()
 	dictionary_to_save["hp"] = new_max_hp
+	if(is_it_kid) :
+		pass
 	
 	var img = Image.new()
 	if(img.load(path_new_img) != 0) :

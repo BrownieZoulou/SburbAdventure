@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jodes.png-39d0f0098953a5fb3c82905f9c5d3a6e.stex"
+path="res://.import/Lutin.png-b4e1ebd95cef58570b43c4a3b4179c69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DataBase/Kids/Jodes/Jodes.png"
-dest_files=[ "res://.import/Jodes.png-39d0f0098953a5fb3c82905f9c5d3a6e.stex" ]
+source_file="res://DataBase/Mobs/Lutin/Lutin.png"
+dest_files=[ "res://.import/Lutin.png-b4e1ebd95cef58570b43c4a3b4179c69.stex" ]
 
 [params]
 

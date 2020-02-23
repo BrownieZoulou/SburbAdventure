@@ -41,7 +41,6 @@ func _ready():
 		$MobPositions.get_child(i2).position.y += (-v_separation*(i2%4) + (int(i2/4)*v_separation_offset))
 
 func separate(isk) :
-	print("modifictaion !")
 	if(nb_separation_left > 0) :
 		separation += 50
 		self.set("custom_constants/separation", separation)

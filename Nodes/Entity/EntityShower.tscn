@@ -212,9 +212,9 @@ valign = 1
 clip_text = true
 
 [node name="ChangeWeaponBtn" type="Button" parent="."]
-margin_left = 503.572
+margin_left = 505.423
 margin_top = 96.7147
-margin_right = 613.572
+margin_right = 615.423
 margin_bottom = 129.715
 custom_fonts/font = SubResource( 4 )
 text = "Change"
@@ -347,13 +347,13 @@ custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "test"
 
-[node name="NewWeaponName2" type="HBoxContainer" parent="ChangeWeaponBox"]
+[node name="NewWeaponName" type="HBoxContainer" parent="ChangeWeaponBox"]
 anchor_right = 1.0
 margin_top = 19.1622
 margin_bottom = 58.1622
 alignment = 1
 
-[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponName2"]
+[node name="Label" type="Label" parent="ChangeWeaponBox/NewWeaponName"]
 margin_left = 25.0
 margin_top = 11.0
 margin_right = 213.0
@@ -362,7 +362,7 @@ custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Weapon name :"
 
-[node name="NameChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponName2"]
+[node name="NameChangeValue" type="TextEdit" parent="ChangeWeaponBox/NewWeaponName"]
 margin_left = 217.0
 margin_right = 467.0
 margin_bottom = 39.0
